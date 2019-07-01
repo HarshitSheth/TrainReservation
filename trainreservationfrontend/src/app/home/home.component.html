@@ -1,0 +1,9 @@
+<html>
+  <body>
+  <div class="bg">
+    <div align="center" class="welcome"><strong>Train Reservation Portal</strong></div>
+    <div *ngIf="!existingUser" align="center" class="welcome"><h2>Please <a href="http://localhost:4200/login">Login</a>/<a href="http://localhost:4200/register">Register</a> to continue</h2></div>
+    <div *ngIf="existingUser" class="text-center display-4 top welcome-user-text"><h3>Welcome {{user.toUpperCase()}}</h3></div>
+  </div>
+  </body>
+</html>

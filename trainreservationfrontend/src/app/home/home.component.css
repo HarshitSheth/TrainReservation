@@ -1,0 +1,25 @@
+.welcome{
+  letter-spacing: 3px;
+  padding-top: 30px;
+  font-size: xx-large;
+  /*margin-top: 30px;*/
+}
+
+.top{
+  margin-top: 30px;
+}
+/*.shift-left{*/
+/*  margin-right: 25px;*/
+/*}*/
+
+.welcome-user-text{
+  color: white;
+}
+
+.bg{
+  width: 100%;
+  height: 553px;
+  background: url('../../assets/train.jpg') no-repeat center;
+  background-size: cover;
+  background-position: top center;
+}

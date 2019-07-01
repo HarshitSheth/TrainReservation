@@ -1,0 +1,45 @@
+<form *ngIf="verifyLogin()" (ngSubmit)="fetchPassenger(passengerDetails.pnr)">
+  <div class="text-center alert-danger top" *ngIf="!validPnr">Invalid PNR!</div>
+  <div class="form-group">
+    <table align="center" class="form-group top right">
+      <tr>
+        <td>
+          <label for="pnr">Passenger PNR</label>
+        </td>
+        <td>
+          <input required [(ngModel)]="passengerDetails.pnr" ngModel name="pnr" #pnr="ngModel" id="pnr" type="text" class="form-control-lg text-center">
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <div class="float-right alert alert-danger text-center width" *ngIf="pnr.touched && !pnr.valid">PNR required</div>
+        </td>
+      </tr>
+    </table>
+    <div class="button">
+      <button type="submit" class="btn btn-primary top-submit">Submit</button>
+    </div>
+  </div>
+</form>
+
+<div *ngIf="verification">
+  <!--  <label>Reservation made in </label>-->
+  <table align="center" class="form-group fit bg-info top">
+    <tr>
+      <th class="text-center">PNR</th>
+      <th class="text-center">Passenger Name</th>
+      <th class="text-center">Passenger Age</th>
+      <th class="text-center">Travel Class</th>
+      <th class="text-center">Coach Number</th>
+      <th class="text-center">Seat Number</th>
+    </tr>
+    <tr>
+      <td class="text-center">{{passengerDetails.pnr}}</td>
+      <td class="text-center">{{passengerDetails.passengername}}</td>
+      <td class="text-center">{{passengerDetails.passengerage}}</td>
+      <td class="text-center">{{passengerDetails.classname}}</td>
+      <td class="text-center">{{passengerDetails.coach}}</td>
+      <td class="text-center">{{passengerDetails.seatnumber}}</td>
+    </tr>
+  </table>
+</div>

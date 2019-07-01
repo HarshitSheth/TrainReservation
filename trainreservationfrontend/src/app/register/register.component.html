@@ -1,0 +1,86 @@
+<!--<head>-->
+<!--<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">-->
+<!--<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>-->
+<!--<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
+<!--</head>-->
+
+<body class="container">
+  <div *ngIf="logOut()" class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header">Register</div>
+        <div class="card-body">
+          <form class="form-horizontal" method="post" action="#" (ngSubmit)="register()">
+<!--            <div *ngIf="!availableUser" class="alert-danger text-center">Username is already taken</div>-->
+            <div class="form-group">
+              <label for="name" class="cols-sm-2 control-label">Your Name</label>
+              <label *ngIf="!validName" class="float-right alert-danger">Invalid name</label>
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                  <input required [(ngModel)]="registerUser.name" ngModel #name="ngModel" type="text" class="form-control" name="name" id="name" placeholder="Enter your Name" />
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email" class="cols-sm-2 control-label">Your Email</label>
+              <label *ngIf="!validEmail" class="float-right alert-danger">Invalid email</label>
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                  <input required [(ngModel)]="registerUser.email" ngModel #email="ngModel" type="text" class="form-control" name="email" id="email" placeholder="Enter your Email" />
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="phone" class="cols-sm-2 control-label">Contact Number</label>
+              <label *ngIf="!validContact" class="float-right alert-danger">Invalid contact</label>
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                  <input required [(ngModel)]="registerUser.contact" ngModel #phone="ngModel" type="text" class="form-control" name="phone" id="phone" placeholder="Enter your Contact" />
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="username" class="cols-sm-2 control-label">Username</label>
+              <label *ngIf="!validUserName" class="float-right alert-danger">Invalid user name</label>
+              <label *ngIf="validUserName && !availableUser" class="alert-danger text-center">Username is already taken</label>
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                  <input required [(ngModel)]="registerUser.username" ngModel #userName="ngModel" type="text" class="form-control" name="username" id="username" placeholder="Enter your Username" />
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="password" class="cols-sm-2 control-label">Password</label>
+              <label *ngIf="!validPassword" class="float-right alert-danger">Invalid password</label>
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                  <input required [(ngModel)]="registerUser.password" ngModel #password="ngModel" type="password" class="form-control width" name="password" id="password" placeholder="Enter your Password" />
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="confirm" class="cols-sm-2 control-label">Confirm Password</label>
+              <label *ngIf="!validConfirmPass" class="float-right alert-danger">Incorrect confirm password</label>
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                  <input required [(ngModel)]="registerUser.confirmpassword" ngModel #confirmPassword="ngModel" type="password" class="form-control width" name="confirm" id="confirm" placeholder="Confirm your Password" />
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary btn-lg btn-block login-button">Register</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-center warning" *ngIf="!logOut()">Please <a href="http://localhost:4200/logout">Logout</a> to register</div>
+</body>

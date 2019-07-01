@@ -1,0 +1,65 @@
+<form *ngIf="verifyLogin()" (ngSubmit)="registerPassenger()">
+  <div class="form-group">
+    <div *ngIf="verification && availability" class="text-center top"><pre>Thank you for reservation! Please find the details below.</pre></div>
+    <div class="text-center alert-danger" *ngIf="!availability">No availability!</div>
+    <div class="text-center alert-danger" *ngIf="!validName">Name should not be empty and should not contain special characters or integer</div>
+    <div class="text-center alert-danger" *ngIf="!validAge">Age should not be empty and should only be integers</div>
+    <table align="center" class="form-group top">
+      <tr>
+        <td>
+          <label for="passengerName">Passenger name</label>
+        </td>
+        <td>
+          <input required [(ngModel)]="passengerDetails.passengername" ngModel name="passengerName" #passengerName="ngModel" id="passengerName" type="text" class="form-control-lg">
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <div class="alert alert-danger text-center width float-right" *ngIf="passengerName.touched && !passengerName.valid">Name required</div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="passengerAge">Passenger age</label>
+        </td>
+        <td>
+          <input required [(ngModel)]="passengerDetails.passengerage" ngModel name="passengerAge" #passengerAge="ngModel" id="passengerAge" type="text" class="form-control-lg bottom">
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <div class="alert alert-danger text-center width float-right" *ngIf="passengerAge.touched && !passengerAge.valid">Age required</div>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" align="center">
+          <button type="submit" class="btn btn-primary right top">Submit</button>
+        </td>
+      </tr>
+    </table>
+  </div>
+</form>
+
+<div *ngIf="verification && availability">
+<!--  <label>Reservation made in </label>-->
+  <table align="center" class="form-group fit bg-info top">
+    <tr>
+      <th class="text-center">PNR</th>
+      <th class="text-center">Passenger Name</th>
+      <th class="text-center">Passenger Age</th>
+      <th class="text-center">Travel Class</th>
+      <th class="text-center">Coach Number</th>
+      <th class="text-center">Seat Number</th>
+    </tr>
+    <tr>
+      <td class="text-center">{{passengerDetails.pnr}}</td>
+      <td class="text-center">{{passengerDetails.passengername}}</td>
+      <td class="text-center">{{passengerDetails.passengerage}}</td>
+      <td class="text-center">{{passengerDetails.classname}}</td>
+      <td class="text-center">{{passengerDetails.coach}}</td>
+      <td class="text-center">{{passengerDetails.seatnumber}}</td>
+    </tr>
+  </table>
+
+
+</div>

@@ -1,0 +1,27 @@
+<body>
+<div>
+<table *ngIf="verifyLogin()" class="custom-select-lg top" align="center">
+  <tr>
+    <td>
+      <label>Choose Class  :</label>
+    </td>
+    <td>
+      <label>
+        <select (change)="classSelect($event)">
+          <option selected disabled hidden> Your Choice </option>
+          <option>Second Tier</option>
+          <option>Third Tier</option>
+          <option>Sleeper</option>
+          <option>General</option>
+        </select>
+      </label>
+    </td>
+  </tr>
+</table>
+
+<div *ngIf="classIsSelected" class="form-group fit bg-info top text-center height">
+  <label>Availability of class {{classinfo.classname}} is {{classinfo.availability}}</label>
+  <label></label>
+</div>
+</div>
+</body>
