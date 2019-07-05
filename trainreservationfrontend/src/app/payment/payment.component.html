@@ -1,0 +1,50 @@
+<form *ngIf="verifyLogin()" (ngSubmit)="payment()">
+<div class="card container">
+  <div align="center">
+    <label><h4>Payment Details</h4></label>
+  </div>
+  <div>
+    <label class="float-left">
+      <h5>Card Number</h5>
+    </label>
+  </div>
+  <div>
+    <label>
+      <input required [(ngModel)]="cardnumber" ngModel name="cardNumber" id="cardNumber" style="width: 423px" class="float-left form-control-lg" placeholder="Card Number">
+      <label *ngIf="!validCardNumber" class="alert-danger">Invalid card number</label>
+    </label>
+  </div>
+  <div>
+    <label class="float-left">
+      <h5>Expiry Date</h5>
+    </label>
+    <label class="float-right">
+      <h5>CVV</h5>
+    </label>
+  </div>
+  <div>
+    <label class="float-left">
+      <input required [(ngModel)]="expirymonth" ngModel name="expirymonth" id="expirymonth" style="width: 100px;" class="form-control-lg" placeholder="Month">
+      <div *ngIf="!validExpiryMonth" class="alert-danger">Invalid month</div>
+    </label>
+    <label>
+      <input required [(ngModel)]="expiryyear" ngModel name="expiryyear" id="expiryyear" style="width: 100px; padding-left: 5px" class="form-control-lg" placeholder="Year">
+      <div *ngIf="!validExpiryYear" class="alert-danger">Invalid year</div>
+    </label>
+    <label class="float-right">
+      <input required [(ngModel)]="cvv" ngModel name="cvv" id="cvv" style="width: 100px;" class="form-control-lg" placeholder="CVV">
+      <div *ngIf="!validCvv" class="alert-danger">Invalid cvv</div>
+    </label>
+  </div>
+  <div>
+    <label for="cardholdername" class="float-left">
+      <h5>Card Holder Name</h5>
+      <input required [(ngModel)]="paymentInfo.cardholdername" name="cardholdername" id="cardholdername" style="width: 423px" class="float-left form-control-lg" placeholder="Card Holder Name">
+    </label>
+    <label *ngIf="!validName" class="alert-danger">Invalid name</label>
+  </div>
+  <div>
+    <button style="width: 420px;" type="submit">Pay</button>
+  </div>
+</div>
+</form>

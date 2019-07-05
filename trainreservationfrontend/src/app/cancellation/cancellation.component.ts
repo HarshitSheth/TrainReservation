@@ -14,7 +14,6 @@ export class CancellationComponent implements OnInit {
   verification = false;
   validPnr = true;
   pnr = '';
-  // details: PassengerDetailsComponent;
   message: string = null;
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -25,7 +24,7 @@ export class CancellationComponent implements OnInit {
     if (null != sessionStorage.getItem('userData')) {
       return true;
     } else {
-      this.router.navigate(['/login']);
+      this.router.navigate(['login']);
     }
   }
 
@@ -34,7 +33,7 @@ export class CancellationComponent implements OnInit {
       this.verification = true;
       // this.details = this.passengerDetails.fetchPassenger(this.pnr);
       // if (this.confirmCancellation()) {
-      const url = 'http://localhost:8080/cancelReservation';
+      const url = 'http://192.168.33.10:8080/cancelReservation';
       this.http.post<boolean>(url, this.pnr).subscribe(
         res => {
           if (res) {

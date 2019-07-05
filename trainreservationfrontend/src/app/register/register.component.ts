@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {Userinformation} from '../../classes';
 import {Router} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
-import {LogoutComponent} from '../logout/logout.component';
 
 @Component({
   selector: 'app-register',
@@ -17,11 +16,12 @@ export class RegisterComponent implements OnInit {
   validUserName = true;
   validPassword = true;
   validConfirmPass = true;
-  verification = false;
   availableUser = true;
 
+  confirmpassword = '';
+
   registerUser: Userinformation = {
-    name: '', email: '', contact: '', username: '', password: '', confirmpassword: ''
+    name: '', email: '', contact: '', username: '', password: ''
   };
 
   constructor(public router: Router, private http: HttpClient) {}
@@ -44,22 +44,22 @@ export class RegisterComponent implements OnInit {
     this.validUserName = this.validateUsername();
     this.validPassword = this.validatePassword();
     this.validConfirmPass = this.validateConfirmPassword();
-    this.availableUser = this.userNameAvailability();
+    this.userNameAvailability();
 
+
+  }
+
+  execute() {
     if (!this.validName || !this.validEmail || !this.validContact || !this.validUserName ||
       !this.validPassword || !this.validConfirmPass || !this.availableUser) {
-      this.verification = false;
       return;
     } else {
-      const url = 'http://localhost:8080/register';
+      const url = 'http://192.168.33.10:8080/register';
       this.http.post<boolean>(url, this.registerUser).subscribe(
         res => {
           if (res) {
-            this.verification = true;
-            this.router.navigate(['/login']);
+            this.router.navigate(['login']);
           } else {
-            // this.availableUser = false;
-            // document.documentElement.scrollTop = 0;
             return;
           }
         }
@@ -67,19 +67,18 @@ export class RegisterComponent implements OnInit {
     }
   }
 
-  userNameAvailability(): boolean {
-    const url = 'http://localhost:8080/usernameAvailability';
-    this.http.post<boolean>(url, this.registerUser).subscribe(
+  userNameAvailability() {
+    const url = 'http://192.168.33.10:8080/usernameAvailability';
+    this.http.post<boolean>(url, this.registerUser.username).subscribe(
       res => {
         if (!res) {
-          // document.documentElement.scrollTop = 0;
-          return false;
+          this.availableUser = false;
         } else {
-          return true;
+          this.availableUser = true;
         }
+        this.execute();
       }
     );
-    return true;
   }
 
   validateName(): boolean {
@@ -113,7 +112,13 @@ export class RegisterComponent implements OnInit {
   }
 
   validateUsername(): boolean {
-    return true;
+    if (!this.registerUser.username.match('^[a-zA-Z0-9]+$')) {
+
+      return false;
+    } else {
+      // this.validName = true;
+      return true;
+    }
   }
 
   validatePassword(): boolean {
@@ -126,13 +131,17 @@ export class RegisterComponent implements OnInit {
   }
 
   validateConfirmPassword(): boolean {
-    if (!(this.registerUser.password === this.registerUser.confirmpassword) ||
-      !(this.registerUser.confirmpassword.match('^((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{8,20})$'))) {
+    if (!(this.registerUser.password === this.confirmpassword) ||
+      !(this.confirmpassword.match('^((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{8,20})$'))) {
 
       return false;
     } else {
       // this.validConfirmPass = true;
       return true;
     }
+  }
+
+  goToLogout() {
+    this.router.navigate(['logout']);
   }
 }

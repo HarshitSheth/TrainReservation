@@ -27,14 +27,14 @@ export class PassengerDetailsComponent implements OnInit {
     if (null != sessionStorage.getItem('userData')) {
       return true;
     } else {
-      this.router.navigate(['/login']);
+      this.router.navigate(['login']);
     }
   }
 
   public fetchPassenger(pnr): PassengerDetailsComponent {
     if (this.validatePnr()) {
       this.verification = true;
-      const url = 'http://localhost:8080/passengerDetails';
+      const url = 'http://192.168.33.10:8080/passengerDetails';
       this.http.post<Classdetails>(url, pnr).subscribe(
         res => {
           if (null != res && null != res.passengername) {

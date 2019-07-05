@@ -13,6 +13,11 @@ public class LoginController {
     @Autowired
     LoginCRUDService loginCRUDService;
 
+    @RequestMapping("/usernameAvailability")
+    public boolean usernameAvailability(@RequestBody String username, Model model){
+        return loginCRUDService.usernameAvailability(username);
+    }
+
     @PostMapping("/register")
     public boolean register(@RequestBody Login login, Model model){
         return loginCRUDService.registerUser(login);

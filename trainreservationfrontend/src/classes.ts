@@ -19,6 +19,10 @@ export class Userinformation {
   contact: string;
   username: string;
   password: string;
-  confirmpassword: string;
+}
+
+export class Paymentinformation {
+  cardholdername: string;
+  paymentamount: number;
 }
 

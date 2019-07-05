@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import trainreservationbackend.trainreservationbackend.dao.ClassInformationCRUDService;
 import trainreservationbackend.trainreservationbackend.dao.ClassInformationDao;
 import trainreservationbackend.trainreservationbackend.model.ClassInformation;
+import trainreservationbackend.trainreservationbackend.service.ServiceClass;
 
 @RestController
 @CrossOrigin
@@ -15,6 +16,8 @@ public class ClassInformationController {
     ClassInformationCRUDService classInformationCRUDService;
     @Autowired
     ClassInformationDao classInformationDao;
+    @Autowired
+    ServiceClass serviceClass;
 
     @PostMapping("/cipost")
     public boolean write(@RequestBody ClassInformation classInformation, Model model){
@@ -29,5 +32,10 @@ public class ClassInformationController {
     @RequestMapping("/test")
     public ClassInformation getClassDetails(){
         return classInformationDao.findById("secondtier").get();
+    }
+
+    @RequestMapping("/verifyClassAvailability")
+    public boolean verifyAvailability(@RequestBody String classname, Model model){
+        return serviceClass.verifyClassAvailability(classname);
     }
 }

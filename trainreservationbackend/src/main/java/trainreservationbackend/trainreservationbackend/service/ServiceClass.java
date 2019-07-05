@@ -1,12 +1,13 @@
 package trainreservationbackend.trainreservationbackend.service;
 
+import org.jasypt.util.text.BasicTextEncryptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import trainreservationbackend.trainreservationbackend.dao.*;
 import trainreservationbackend.trainreservationbackend.factory.TravelClassFactory;
 import trainreservationbackend.trainreservationbackend.factory.TravelClassObjectFactory;
 import trainreservationbackend.trainreservationbackend.factoryProduct.TravelClass;
-import trainreservationbackend.trainreservationbackend.model.ClassDetails;
+import trainreservationbackend.trainreservationbackend.model.ReservationDetails;
 import trainreservationbackend.trainreservationbackend.model.ClassInformation;
 import trainreservationbackend.trainreservationbackend.model.Login;
 
@@ -17,10 +18,10 @@ import java.util.NoSuchElementException;
 public class ServiceClass {
 
     @Autowired
-    private ClassDetailsCRUDService classDetailsCRUDService;
+    private ReservationDetailsCRUDService reservationDetailsCRUDService;
 
     @Autowired
-    private ClassDetailsDao classDetailsDao;
+    private ReservationDetailsDao reservationDetailsDao;
 
     @Autowired
     ClassInformationDao classInformationDao;
@@ -31,7 +32,26 @@ public class ServiceClass {
     @Autowired
     LoginCRUDService loginCRUDService;
 
+    @Autowired
+    private PropertyServiceForJasyptStarter propertyServiceForJasyptStarter;
+
     public ServiceClass() {
+    }
+
+//    public boolean usernameAvailability(String username){
+//
+//    }
+
+    public boolean validateUser(String username){
+        List<Login> logins = loginCRUDService.getFromDB();
+        boolean available = true;
+        for(Login login1: logins){
+            if (username.equals(login1.getUsername())){
+                available = false;
+                break;
+            }
+        }
+        return available;
     }
 
     public boolean validateUser(Login login){
@@ -47,9 +67,12 @@ public class ServiceClass {
     }
 
     public Login loginUser(Login login){
+        BasicTextEncryptor basicTextEncryptor = new BasicTextEncryptor();
+        basicTextEncryptor.setPassword(propertyServiceForJasyptStarter.getProperty());
         List<Login> logins = loginCRUDService.getFromDB();
         boolean validateUser = false;
         for(Login login1: logins){
+            login1.setPassword(basicTextEncryptor.decrypt(login1.getPassword()));
             if (login.getUsername().equals(login1.getUsername()) && login.getPassword().equalsIgnoreCase(login1.getPassword())){
                 login.setName(login1.getName());
                 login.setPassword(null);
@@ -64,8 +87,8 @@ public class ServiceClass {
 
     private boolean validatePnr(String pnr){
         try {
-            if (null != classDetailsCRUDService.getFromDBByID(pnr)) {
-                return null != classDetailsCRUDService.getFromDBByID(pnr).getPassengername();
+            if (null != reservationDetailsCRUDService.getFromDBByID(pnr)) {
+                return null != reservationDetailsCRUDService.getFromDBByID(pnr).getPassengername();
             }
             else {
                 return false;
@@ -83,9 +106,9 @@ public class ServiceClass {
         return classinformation;
     }
 
-    public ClassDetails getPassengerDetails(String pnr){
+    public ReservationDetails getPassengerDetails(String pnr){
         if (validatePnr(pnr)) {
-            ClassDetails classdetails = classDetailsCRUDService.getFromDBByID(pnr);
+            ReservationDetails classdetails = reservationDetailsCRUDService.getFromDBByID(pnr);
             TravelClassFactory travelClassFactory = TravelClassObjectFactory.getObjectFactory().getTravelClassObject(classdetails.getClassname());
             TravelClass travelClass = travelClassFactory.getTravelClass();
             classdetails.setClassname(travelClass.getClassNameUpperCase());
@@ -97,13 +120,13 @@ public class ServiceClass {
 
     public boolean cancelReservation(String pnr){
         if (validatePnr(pnr)) {
-            ClassDetails classDetails;
+            ReservationDetails reservationDetails;
             ClassInformation classInformation;
-            classDetails = classDetailsDao.findById(pnr).get();
-            classDetails.setPassengername(null);
-            classDetails.setPassengerage(null);
-            classDetailsDao.save(classDetails);
-            TravelClassFactory travelClassFactory = TravelClassObjectFactory.getObjectFactory().getTravelClassObject(classDetails.getClassname());
+            reservationDetails = reservationDetailsDao.findById(pnr).get();
+            reservationDetails.setPassengername(null);
+            reservationDetails.setPassengerage(null);
+            reservationDetailsDao.save(reservationDetails);
+            TravelClassFactory travelClassFactory = TravelClassObjectFactory.getObjectFactory().getTravelClassObject(reservationDetails.getClassname());
             TravelClass travelClass = travelClassFactory.getTravelClass();
             classInformation = classInformationCRUDService.getFromDBByID(travelClass.getClassNameLowerCase());
             classInformation.setAvailability(classInformation.getAvailability() + 1);
@@ -114,20 +137,30 @@ public class ServiceClass {
             return false;
     }
 
-    public ClassDetails bookReservation(ClassDetails classDetails){
-            TravelClassFactory travelClassFactory = TravelClassObjectFactory.getObjectFactory().getTravelClassObject(classDetails.getClassname());
+    public boolean verifyClassAvailability(ClassInformation classInformation){
+        return classInformation.getAvailability() > 0;
+    }
+
+    public boolean verifyClassAvailability(String classname){
+        TravelClassFactory travelClassFactory = TravelClassObjectFactory.getObjectFactory().getTravelClassObject(classname);
+        TravelClass travelClass = travelClassFactory.getTravelClass();
+        return  classInformationCRUDService.getFromDBByID(travelClass.getClassNameLowerCase()).getAvailability() > 0;
+    }
+
+    public ReservationDetails bookReservation(ReservationDetails reservationDetails){
+            TravelClassFactory travelClassFactory = TravelClassObjectFactory.getObjectFactory().getTravelClassObject(reservationDetails.getClassname());
             TravelClass travelClass = travelClassFactory.getTravelClass();
-            ClassDetails classDetailsObject = classDetails;
+            ReservationDetails reservationDetailsObject = reservationDetails;
             ClassInformation classInformation;
             classInformation = classInformationDao.findById(travelClass.getClassNameLowerCase()).get();
-            if (classInformation.getAvailability() > 0) {
-                List<ClassDetails> classDetails1 = classDetailsDao.findAll();
-                for (ClassDetails classDetails2 : classDetails1) {
-                    if (classDetails2.getClassname().equalsIgnoreCase(travelClass.getClassNameLowerCase())) {
-                        if (classDetails2.getPassengername() == null && classDetails2.getPassengerage() == null) {
-                            classDetails2.setPassengername(classDetailsObject.getPassengername());
-                            classDetails2.setPassengerage(classDetailsObject.getPassengerage());
-                            classDetailsObject = classDetails2;
+            if (verifyClassAvailability(classInformation)) {
+                List<ReservationDetails> reservationDetails1 = reservationDetailsDao.findAll();
+                for (ReservationDetails reservationDetails2 : reservationDetails1) {
+                    if (reservationDetails2.getClassname().equalsIgnoreCase(travelClass.getClassNameLowerCase())) {
+                        if (reservationDetails2.getPassengername() == null && reservationDetails2.getPassengerage() == null) {
+                            reservationDetails2.setPassengername(reservationDetailsObject.getPassengername());
+                            reservationDetails2.setPassengerage(reservationDetailsObject.getPassengerage());
+                            reservationDetailsObject = reservationDetails2;
                             ClassInformation classInformation1 = classInformationCRUDService.getFromDBByID(travelClass.getClassNameLowerCase());
                             classInformation1.setAvailability(classInformation1.getAvailability() - 1);
                             classInformationCRUDService.saveToDB(classInformation1);
@@ -137,7 +170,7 @@ public class ServiceClass {
                 }
             } else
                 return null;
-            return classDetailsObject;
+            return reservationDetailsObject;
         }
 
 }

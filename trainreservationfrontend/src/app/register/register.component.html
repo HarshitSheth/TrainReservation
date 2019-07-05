@@ -45,7 +45,7 @@
             <div class="form-group">
               <label for="username" class="cols-sm-2 control-label">Username</label>
               <label *ngIf="!validUserName" class="float-right alert-danger">Invalid user name</label>
-              <label *ngIf="validUserName && !availableUser" class="alert-danger text-center">Username is already taken</label>
+              <label *ngIf="validUserName && !availableUser" class="float-right alert-danger">Username is already taken</label>
               <div class="cols-sm-10">
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
@@ -69,7 +69,7 @@
               <div class="cols-sm-10">
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                  <input required [(ngModel)]="registerUser.confirmpassword" ngModel #confirmPassword="ngModel" type="password" class="form-control width" name="confirm" id="confirm" placeholder="Confirm your Password" />
+                  <input required [(ngModel)]="confirmpassword" ngModel #confirmPassword="ngModel" type="password" class="form-control width" name="confirm" id="confirm" placeholder="Confirm your Password" />
                 </div>
               </div>
             </div>
@@ -82,5 +82,5 @@
     </div>
   </div>
 
-  <div class="text-center warning" *ngIf="!logOut()">Please <a href="http://localhost:4200/logout">Logout</a> to register</div>
+  <div class="text-center warning" *ngIf="!logOut()">Please <button (click)="goToLogout()">Logout</button> to register</div>
 </body>

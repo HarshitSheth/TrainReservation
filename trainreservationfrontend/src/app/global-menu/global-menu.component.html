@@ -1,56 +1,20 @@
-<!--<table>-->
-<!--  <tr>-->
-<!--    <td class="topNav">-->
-<!--      <button routerLink="">Home</button>-->
-<!--    </td>-->
-<!--    <td class="topNav" *ngIf="loggedIn()">-->
-<!--      <div class="homeOptions">-->
-<!--        <button routerLink="reservation">Book a reservation</button>-->
-<!--        <button routerLink="passengerDetails">Get passenger details</button>-->
-<!--        <button routerLink="cancelReservation">Cancel reservation</button>-->
-<!--        <button routerLink="classAvailability">Get availability</button>-->
-<!--      </div>-->
-<!--    </td>-->
-<!--    <td class="topNav col-5" *ngIf="!loggedIn()">-->
-<!--&lt;!&ndash;      <button></button>&ndash;&gt;-->
-<!--&lt;!&ndash;      <button></button>&ndash;&gt;-->
-<!--&lt;!&ndash;      <button></button>&ndash;&gt;-->
-<!--&lt;!&ndash;      <button></button>&ndash;&gt;-->
-<!--&lt;!&ndash;      <button></button>&ndash;&gt;-->
-<!--    </td>-->
-<!--    <td class="topNav" *ngIf="!loggedIn()">-->
-<!--      <button class="top" routerLink="register">Register</button>-->
-<!--      <button routerLink="login">Login</button>-->
-<!--    </td>-->
-<!--    <td class="topNav">-->
-<!--      <div *ngIf="loggedIn()" class="logOptions">-->
-<!--        <button></button><button></button>-->
-<!--        <button class="float-right" routerLink="logout">Logout</button>-->
-<!--      </div>-->
-<!--    </td>-->
-<!--  </tr>-->
-<!--</table>-->
-
-<!--<nav class="navbar navbar-expand-lg navbar-light bg-light">-->
-<!--</nav>-->
-
-  <div class="topNav">
-    <div>
-      <button class="float-left" routerLink="">Home</button>
-    </div>
-    <div class="float-left" *ngIf="loggedIn()">
-        <button routerLink="reservation">Book a reservation</button>
-        <button routerLink="passengerDetails">Get passenger details</button>
-        <button routerLink="cancelReservation">Cancel reservation</button>
-        <button routerLink="classAvailability">Get availability</button>
-    </div>
-    <div *ngIf="loggedIn()">
-      <button class="float-right" routerLink="logout">Logout</button>
-    </div>
-    <div class="float-right" *ngIf="!loggedIn()">
-      <button class="float-left" routerLink="register">Register</button>
-      <button class="float-left" routerLink="login">Login</button>
-    </div>
+<div class="topNav">
+  <div>
+    <button class="float-left" (click)="goToHome()">Home</button>
   </div>
+  <div class="float-left" *ngIf="loggedIn()">
+      <button (click)="goToReservation()">Book a reservation</button>
+      <button (click)="goToPassengerDetails()">Get passenger details</button>
+      <button (click)="goToCancelReservation()">Cancel reservation</button>
+      <button (click)="goToClassAvailability()">Get availability</button>
+  </div>
+  <div *ngIf="loggedIn()">
+    <button class="float-right" (click)="goToLogout()">Logout</button>
+  </div>
+  <div class="float-right" *ngIf="!loggedIn()">
+    <button class="float-left" (click)="goToRegister()">Register</button>
+    <button class="float-left" (click)="goToLogin()">Login</button>
+  </div>
+</div>
 
 

@@ -10,10 +10,11 @@ import { PassengerDetailsComponent } from './passenger-details/passenger-details
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { LogoutComponent } from './logout/logout.component';
-import { ClassChoiceComponent } from './class-choice/class-choice.component';
+// import { ClassChoiceComponent } from './class-choice/class-choice.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
+import { PaymentComponent } from './payment/payment.component';
 
 
 const appRoutes: Routes = [
@@ -31,6 +32,8 @@ const appRoutes: Routes = [
     component: AvailabilityComponent},
   {path: 'logout',
     component: LogoutComponent},
+  {path: 'payment',
+    component: PaymentComponent},
   {path: '',
     component: HomeComponent}
 ];
@@ -47,8 +50,9 @@ const appRoutes: Routes = [
     LoginComponent,
     RegisterComponent,
     LogoutComponent,
-    ClassChoiceComponent,
+    // ClassChoiceComponent,
     HomeComponent,
+    PaymentComponent,
   ],
   imports: [
     BrowserModule,

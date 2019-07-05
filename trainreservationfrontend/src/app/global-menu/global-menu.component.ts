@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {LoginComponent} from '../login/login.component';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-global-menu',
@@ -8,16 +8,45 @@ import {LoginComponent} from '../login/login.component';
 })
 export class GlobalMenuComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
 
   loggedIn(): boolean {
-    if(null == sessionStorage.getItem('userData'))
-      return false;
-    return true;
-    //return LoginComponent.loginVerification;
+    return null != sessionStorage.getItem('userData');
+  }
+
+  goToReservation() {
+    this.router.navigate(['reservation']);
+  }
+
+  goToPassengerDetails() {
+    this.router.navigate(['passengerDetails']);
+  }
+
+  goToCancelReservation() {
+    this.router.navigate(['cancelReservation']);
+  }
+
+  goToClassAvailability() {
+    this.router.navigate(['classAvailability']);
+  }
+
+  goToLogin() {
+    this.router.navigate(['login']);
+  }
+
+  goToLogout() {
+    this.router.navigate(['logout']);
+  }
+
+  goToRegister() {
+    this.router.navigate(['register']);
+  }
+
+  goToHome() {
+    this.router.navigate(['']);
   }
 
 }

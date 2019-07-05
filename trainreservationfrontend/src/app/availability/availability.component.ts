@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {ClassChoiceComponent} from '../class-choice/class-choice.component';
+// import {ClassChoiceComponent} from '../class-choice/class-choice.component';
 import {HttpClient} from '@angular/common/http';
 import {Classinformation} from '../../classes';
 import {Router} from '@angular/router';
+import {ReservationComponent} from '../reservation/reservation.component';
 
 @Component({
   selector: 'app-availability',
@@ -28,16 +29,16 @@ export class AvailabilityComponent implements OnInit {
     if (null != sessionStorage.getItem('userData')) {
       return true;
     } else {
-      this.router.navigate(['/login']);
+      this.router.navigate(['login']);
     }
   }
 
   classSelect($event: any) {
-    ClassChoiceComponent.className = $event.target.value;
+    ReservationComponent.className = $event.target.value;
     this.classChoice = $event.target.value;
     this.classIsSelected = true;
-    const url = 'http://localhost:8080/getAvailability';
-    this.http.post<Classinformation>(url, ClassChoiceComponent.className).subscribe(
+    const url = 'http://192.168.33.10:8080/getAvailability';
+    this.http.post<Classinformation>(url, ReservationComponent.className).subscribe(
       res => {
         this.classinfo = res;
       },

@@ -33,4 +33,8 @@ export class LogoutComponent implements OnInit {
       // return 'Logged out';
     }
   }
+
+  goToLogin() {
+    this.router.navigate(['login']);
+  }
 }

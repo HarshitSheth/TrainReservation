@@ -20,11 +20,11 @@ public class Sleeper implements TravelClass{
 
     @Override
     public int getClassAvailability() {
-        return classInformationCRUDService.getFromDBByID("Sleeper").getAvailability();
+        return classInformationCRUDService.getFromDBByID("sleeper").getAvailability();
     }
 
     @Override
     public int getTotalClassSeats() {
-        return classInformationCRUDService.getFromDBByID("Sleeper").getTotalseats();
+        return classInformationCRUDService.getFromDBByID("sleeper").getTotalseats();
     }
 }

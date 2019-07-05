@@ -12,7 +12,7 @@ export class LoginComponent implements OnInit {
 
   // static user: string;
   static user: Userinformation = {
-    name: '', email: '', contact: '', username: '', password: '', confirmpassword: ''
+    name: '', email: '', contact: '', username: '', password: ''
   };
   static loginVerification = false;
   verification = true;
@@ -35,14 +35,14 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    const url = 'http://localhost:8080/login';
+    const url = 'http://192.168.33.10:8080/login';
     this.http.post<Userinformation>(url, LoginComponent.user).subscribe(
       res => {
         if (null != res) {
           this.verification = true;
           LoginComponent.loginVerification = true;
           sessionStorage.setItem('userData', res.name);
-          this.router.navigate(['/']);
+          this.router.navigate(['']);
           LoginComponent.user.name = res.name;
         } else {
           this.verification = false;
@@ -51,6 +51,14 @@ export class LoginComponent implements OnInit {
         }
       }
     );
+  }
+
+  goToLogout() {
+    this.router.navigate(['login']);
+  }
+
+  goToRegister() {
+    this.router.navigate(['register']);
   }
 
 }

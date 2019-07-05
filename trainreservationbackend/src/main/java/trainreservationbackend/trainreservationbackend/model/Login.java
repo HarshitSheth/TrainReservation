@@ -22,16 +22,14 @@ public class Login {
     private String contact;
     private String name;
     private String password;
-    private String confirmpassword;
 
-    public Login(int userid, String username, String email, String contact, String name, String password, String confirmpassword) {
+    public Login(int userid, String username, String email, String contact, String name, String password) {
         this.userid = userid;
         this.username = username;
         this.email = email;
         this.contact = contact;
         this.name = name;
         this.password = password;
-        this.confirmpassword = confirmpassword;
     }
 
     public String getEmail() {
@@ -56,14 +54,6 @@ public class Login {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getConfirmpassword() {
-        return confirmpassword;
-    }
-
-    public void setConfirmpassword(String confirmpassword) {
-        this.confirmpassword = confirmpassword;
     }
 
     public Login(){}

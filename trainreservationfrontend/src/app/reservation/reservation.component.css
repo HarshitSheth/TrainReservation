@@ -1,3 +1,38 @@
 .top {
-  margin-top: 50px;
+  margin-top: 40px;
+}
+
+.top-thank-you{
+  margin-top: 100px;
+}
+
+.left{
+  margin-right: 14px;
+}
+
+
+
+.right{
+  margin-left: 35%;
+}
+
+.right-submit{
+  margin-left: 20%;
+}
+
+.font-size{
+  font-size: medium;
+}
+
+.table{
+  border-width: 5px;
+  height: 10px;
+}
+
+.cost-top{
+  margin-top: 70px;
+}
+
+.padding-left{
+  padding-left: 25%;
 }
