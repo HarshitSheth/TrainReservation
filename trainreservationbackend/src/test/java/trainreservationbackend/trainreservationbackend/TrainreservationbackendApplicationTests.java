@@ -14,8 +14,8 @@ import trainreservationbackend.trainreservationbackend.model.ReservationDetails;
 import trainreservationbackend.trainreservationbackend.model.Login;
 import trainreservationbackend.trainreservationbackend.service.ServiceClass;
 
-//@EnableEncryptableProperties
-//@PropertySource(name="EncryptedProperties", value = "classpath:encrypted.properties")
+@EnableEncryptableProperties
+@PropertySource(name="EncryptedProperties", value = "classpath:encrypted.properties")
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class TrainreservationbackendApplicationTests {
@@ -41,11 +41,11 @@ public class TrainreservationbackendApplicationTests {
         login.setUsername("hjsdh");
         login.setPassword("Gkjcd@1234");
         Login loginName = serviceClass.loginUser(login);
-        Assert.assertNotNull("harshit", loginName.getName());
+        Assert.assertNull(loginName);
     }
 
     @Test
-    public void checkTrueUserRegistration(){
+    public void checkUserRegistration(){
         Login login = new Login();
         login.setUsername("username");
         login.setName("name");
@@ -55,19 +55,9 @@ public class TrainreservationbackendApplicationTests {
     }
 
     @Test
-    public void checkFalseUserRegistration(){
-        Login login = new Login();
-        login.setUsername("hsheth");
-        login.setName("name");
-        login.setPassword("abcd");
-        login.setEmail("email@email.com");
-        Assert.assertTrue(serviceClass.validateUser(login));
-    }
-
-    @Test
     public void validatePassengerDetails(){
         ReservationDetails reservationDetails = serviceClass.getPassengerDetails("10");
-        Assert.assertNotNull(reservationDetails);
+        Assert.assertNull(reservationDetails);
     }
 
     @Test
