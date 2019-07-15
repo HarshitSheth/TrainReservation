@@ -61,9 +61,13 @@ public class TrainreservationbackendApplicationTests {
     }
 
     @Test
-    public void validateCancelReservation(){
-        Assert.assertTrue(serviceClass.cancelReservation("10"));
+    public void validateFalseCancelReservation(){
+        Assert.assertFalse(serviceClass.cancelReservation("40"));
+    }
 
+    @Test
+    public void validateTrueCancelReservation(){
+        Assert.assertTrue(serviceClass.cancelReservation("10"));
     }
 
     @Test
