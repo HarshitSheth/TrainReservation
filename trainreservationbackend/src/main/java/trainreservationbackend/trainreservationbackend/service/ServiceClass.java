@@ -33,7 +33,7 @@ public class ServiceClass {
     LoginCRUDService loginCRUDService;
 
     @Autowired
-    private PropertyServiceForJasyptStarter propertyServiceForJasyptStarter;
+//    private PropertyServiceForJasyptStarter propertyServiceForJasyptStarter;
 
     public ServiceClass() {
     }
@@ -68,11 +68,11 @@ public class ServiceClass {
 
     public Login loginUser(Login login){
         BasicTextEncryptor basicTextEncryptor = new BasicTextEncryptor();
-        basicTextEncryptor.setPassword(propertyServiceForJasyptStarter.getProperty());
+//        basicTextEncryptor.setPassword(propertyServiceForJasyptStarter.getProperty());
         List<Login> logins = loginCRUDService.getFromDB();
         boolean validateUser = false;
         for(Login login1: logins){
-            login1.setPassword(basicTextEncryptor.decrypt(login1.getPassword()));
+//            login1.setPassword(basicTextEncryptor.decrypt(login1.getPassword()));
             if (login.getUsername().equals(login1.getUsername()) && login.getPassword().equalsIgnoreCase(login1.getPassword())){
                 login.setName(login1.getName());
                 login.setPassword(null);

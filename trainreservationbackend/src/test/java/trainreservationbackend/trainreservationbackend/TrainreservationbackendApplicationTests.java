@@ -1,10 +1,12 @@
 package trainreservationbackend.trainreservationbackend;
 
+import com.ulisesbocchio.jasyptspringboot.annotation.EnableEncryptableProperties;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 import trainreservationbackend.trainreservationbackend.dao.PaymentInformationCRUDService;
 import trainreservationbackend.trainreservationbackend.model.PaymentInformation;
@@ -12,6 +14,8 @@ import trainreservationbackend.trainreservationbackend.model.ReservationDetails;
 import trainreservationbackend.trainreservationbackend.model.Login;
 import trainreservationbackend.trainreservationbackend.service.ServiceClass;
 
+//@EnableEncryptableProperties
+//@PropertySource(name="EncryptedProperties", value = "classpath:encrypted.properties")
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class TrainreservationbackendApplicationTests {
