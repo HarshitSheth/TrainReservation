@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Classdetails} from '../../classes';
 import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
+import {AppComponent} from '../app.component';
 
 @Component({
   selector: 'app-passenger-details',
@@ -18,7 +19,7 @@ export class PassengerDetailsComponent implements OnInit {
     passengerage: '',
   };
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router, private app: AppComponent) { }
 
   ngOnInit() {
   }
@@ -34,7 +35,7 @@ export class PassengerDetailsComponent implements OnInit {
   public fetchPassenger(pnr): PassengerDetailsComponent {
     if (this.validatePnr()) {
       this.verification = true;
-      const url = 'http://192.168.33.10:8080/passengerDetails';
+      const url = this.app.springBoot + '/passengerDetails';
       this.http.post<Classdetails>(url, pnr).subscribe(
         res => {
           if (null != res && null != res.passengername) {

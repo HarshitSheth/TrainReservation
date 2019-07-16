@@ -3,6 +3,7 @@ import {Paymentinformation} from '../../classes';
 import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {DataServiceService} from '../data-service.service';
+import {AppComponent} from '../app.component';
 
 @Component({
   selector: 'app-payment',
@@ -23,7 +24,7 @@ export class PaymentComponent implements OnInit {
   expiryyear = '';
   cvv = '';
 
-  constructor(private http: HttpClient, private router: Router, private dataService: DataServiceService) { }
+  constructor(private http: HttpClient, private router: Router, private dataService: DataServiceService, private app: AppComponent) { }
 
   paymentInfo: Paymentinformation = {
     cardholdername: '', paymentamount: this.dataService.paymentAmount,
@@ -37,10 +38,10 @@ export class PaymentComponent implements OnInit {
       if (null != sessionStorage.getItem('reservationProcess')) {
         return true;
       } else {
-        this.router.navigate(['http://192.168.33.10:8080/reservation']);
+        this.router.navigate([this.app.springBoot + '/reservation']);
       }
     } else {
-      this.router.navigate(['http://192.168.33.10:8080/login']);
+      this.router.navigate([this.app.springBoot + '/login']);
     }
   }
 
@@ -60,7 +61,7 @@ export class PaymentComponent implements OnInit {
     }
 
     if (this.verification) {
-      const url = 'http://192.168.33.10:8080/payment';
+      const url = this.app.springBoot + '/payment';
       this.http.post<boolean>(url, this.paymentInfo).subscribe(
         res => {
           if (res) {

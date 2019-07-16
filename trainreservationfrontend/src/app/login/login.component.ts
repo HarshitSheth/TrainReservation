@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {Userinformation} from '../../classes';
+import {AppComponent} from '../app.component';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,7 @@ export class LoginComponent implements OnInit {
   static loginVerification = false;
   verification = true;
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router, private app: AppComponent) { }
 
   ngOnInit() {
   }
@@ -35,7 +36,7 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    const url = 'http://192.168.33.10:8080/login';
+    const url = this.app.springBoot + '/login';
     this.http.post<Userinformation>(url, LoginComponent.user).subscribe(
       res => {
         if (null != res) {

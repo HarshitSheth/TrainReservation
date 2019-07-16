@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {PassengerDetailsComponent} from '../passenger-details/passenger-details.component';
 import {Router} from '@angular/router';
+import {AppComponent} from '../app.component';
 
 @Component({
   selector: 'app-cancellation',
@@ -15,7 +16,7 @@ export class CancellationComponent implements OnInit {
   validPnr = true;
   pnr = '';
   message: string = null;
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router, private app: AppComponent) { }
 
   ngOnInit() {
   }
@@ -33,7 +34,7 @@ export class CancellationComponent implements OnInit {
       this.verification = true;
       // this.details = this.passengerDetails.fetchPassenger(this.pnr);
       // if (this.confirmCancellation()) {
-      const url = 'http://192.168.33.10:8080/cancelReservation';
+      const url = this.app.springBoot + '/cancelReservation';
       this.http.post<boolean>(url, this.pnr).subscribe(
         res => {
           if (res) {

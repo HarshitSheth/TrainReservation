@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Userinformation} from '../../classes';
 import {Router} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
+import {AppComponent} from '../app.component';
 
 @Component({
   selector: 'app-register',
@@ -24,7 +25,7 @@ export class RegisterComponent implements OnInit {
     name: '', email: '', contact: '', username: '', password: ''
   };
 
-  constructor(public router: Router, private http: HttpClient) {}
+  constructor(public router: Router, private http: HttpClient, private app: AppComponent) {}
 
   ngOnInit() {
   }
@@ -54,7 +55,7 @@ export class RegisterComponent implements OnInit {
       !this.validPassword || !this.validConfirmPass || !this.availableUser) {
       return;
     } else {
-      const url = 'http://192.168.33.10:8080/register';
+      const url = this.app.springBoot + '/register';
       this.http.post<boolean>(url, this.registerUser).subscribe(
         res => {
           if (res) {
@@ -68,7 +69,7 @@ export class RegisterComponent implements OnInit {
   }
 
   userNameAvailability() {
-    const url = 'http://192.168.33.10:8080/usernameAvailability';
+    const url = this.app.springBoot + '/usernameAvailability';
     this.http.post<boolean>(url, this.registerUser.username).subscribe(
       res => {
         if (!res) {

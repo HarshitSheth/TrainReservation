@@ -4,6 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {Classinformation} from '../../classes';
 import {Router} from '@angular/router';
 import {ReservationComponent} from '../reservation/reservation.component';
+import {AppComponent} from '../app.component';
 
 @Component({
   selector: 'app-availability',
@@ -20,7 +21,7 @@ export class AvailabilityComponent implements OnInit {
     classname: '', availability: '', totalseats: ''
   };
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router, private app: AppComponent) { }
 
   ngOnInit() {
   }
@@ -37,7 +38,7 @@ export class AvailabilityComponent implements OnInit {
     ReservationComponent.className = $event.target.value;
     this.classChoice = $event.target.value;
     this.classIsSelected = true;
-    const url = 'http://192.168.33.10:8080/getAvailability';
+    const url = this.app.springBoot + '/getAvailability';
     this.http.post<Classinformation>(url, ReservationComponent.className).subscribe(
       res => {
         this.classinfo = res;

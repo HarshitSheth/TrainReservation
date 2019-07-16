@@ -4,6 +4,7 @@ import {Classdetails} from '../../classes';
 import {PaymentComponent} from '../payment/payment.component';
 import {HttpClient} from '@angular/common/http';
 import {DataServiceService} from '../data-service.service';
+import {AppComponent} from '../app.component';
 
 @Component({
   selector: 'app-reservation',
@@ -20,7 +21,7 @@ export class ReservationComponent implements OnInit {
   verification = false;
   classChoice: string;
   classIsSelected = true;
-  constructor(private router: Router, private http: HttpClient, private dataService: DataServiceService) {
+  constructor(private router: Router, private http: HttpClient, private dataService: DataServiceService, private app: AppComponent) {
   }
 
   ngOnInit() {
@@ -84,7 +85,7 @@ export class ReservationComponent implements OnInit {
         }
       }
       if (this.verification) {
-        const url = 'http://192.168.33.10:8080/verifyClassAvailability';
+        const url = this.app.springBoot + '/verifyClassAvailability';
         this.dataService.passengerDetails.classname = ReservationComponent.className;
         this.http.post<boolean>(url, this.dataService.passengerDetails.classname).subscribe(
           res => {
@@ -105,7 +106,7 @@ export class ReservationComponent implements OnInit {
 }
 
   registerPassenger() {
-      const url = 'http://192.168.33.10:8080/reservation';
+      const url = this.app.springBoot + '/reservation';
       this.http.post<Classdetails>(url, this.dataService.passengerDetails).subscribe(
         res => {
           if (null != res) {
