@@ -14,8 +14,8 @@ import trainreservationbackend.trainreservationbackend.model.ReservationDetails;
 import trainreservationbackend.trainreservationbackend.model.Login;
 import trainreservationbackend.trainreservationbackend.service.ServiceClass;
 
-@EnableEncryptableProperties
-@PropertySource(name="EncryptedProperties", value = "classpath:encrypted.properties")
+//@EnableEncryptableProperties
+//@PropertySource(name="EncryptedProperties", value = "classpath:encrypted.properties")
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class TrainreservationbackendApplicationTests {

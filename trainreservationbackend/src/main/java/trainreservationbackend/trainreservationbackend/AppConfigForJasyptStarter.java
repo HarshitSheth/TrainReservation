@@ -5,7 +5,7 @@
 //import org.springframework.context.annotation.PropertySource;
 //
 //@Configuration
-//@EnableEncryptableProperties
+////@EnableEncryptableProperties
 //@PropertySource("encrypted.properties")
 //public class AppConfigForJasyptStarter {
 //}
