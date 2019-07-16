@@ -35,7 +35,7 @@ export class PassengerDetailsComponent implements OnInit {
   public fetchPassenger(pnr): PassengerDetailsComponent {
     if (this.validatePnr()) {
       this.verification = true;
-      const url = this.app.springBoot + '/passengerDetails';
+      const url = 'http://localhost:8080/passengerDetails';
       this.http.post<Classdetails>(url, pnr).subscribe(
         res => {
           if (null != res && null != res.passengername) {

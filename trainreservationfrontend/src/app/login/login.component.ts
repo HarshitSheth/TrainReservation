@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    const url = this.app.springBoot + '/login';
+    const url = 'http://localhost:8080/login';
     this.http.post<Userinformation>(url, LoginComponent.user).subscribe(
       res => {
         if (null != res) {
