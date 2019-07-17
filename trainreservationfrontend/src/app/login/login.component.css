@@ -23,6 +23,19 @@ a{
   color: white;
 }
 
+.register-button{
+  margin-top: -25px;
+  color: white !important;
+  border-style: solid;
+  background-color: #17a2b8;
+  border-radius: 5px;
+  height: 45px;
+}
+
+.register-button:hover{
+  color: white;
+  background-color: #138496;
+}
 
 #login .container #login-row #login-column #login-box {
   margin-top: 50px;
