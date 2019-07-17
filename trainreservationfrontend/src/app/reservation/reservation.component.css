@@ -10,8 +10,6 @@
   margin-right: 14px;
 }
 
-
-
 .right{
   margin-left: 35%;
 }
@@ -27,12 +25,16 @@
 .table{
   border-width: 5px;
   height: 10px;
+  border-color: #00203FFF;
+  position:absolute;
+  bottom: 60px;
+  right:0;
 }
 
 .cost-top{
   margin-top: 70px;
 }
 
-.padding-left{
-  padding-left: 25%;
+.error-top{
+  margin-top: 30px;
 }

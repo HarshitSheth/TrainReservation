@@ -3,7 +3,11 @@
   <div class="bg">
     <div align="center" class="welcome"><strong>Maharaja Express Train Reservation Portal</strong></div>
     <div *ngIf="!existingUser" align="center" class="welcome"><h2>Please <button (click)="goToLogin()">Login</button>/<button (click)="goToRegister()">Register</button> to continue</h2></div>
-    <div *ngIf="existingUser" class="text-center display-4 top welcome-user-text"><h3>Welcome {{user.toUpperCase()}}</h3></div>
+    <div *ngIf="existingUser" class="text-center display-4 top welcome-user-text">
+      <br><br>
+      <h3>Welcome {{user.toUpperCase()}}!</h3>
+
+    </div>
   </div>
   </body>
 </html>

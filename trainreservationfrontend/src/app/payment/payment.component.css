@@ -10,13 +10,14 @@
 }
 
 button{
-  background-color: blueviolet;
+  background-color: #00203FFF;
   color: white;
   height: 50px;
 }
 
 button:hover{
   background-color: darkcyan;
-  color: black;
+  color: #00203FFF;
+  font-size: larger;
   border: none;
 }

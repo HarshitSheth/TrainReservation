@@ -41,23 +41,25 @@
 <form (ngSubmit)="validation()">
   <div class="form-group">
     <div *ngIf="verification && availability && paymentSuccess" class="text-center top-thank-you"><label class="margin-left"><pre>Thank you for reservation! Please find the details below.</pre></label></div>
-    <div class="text-center alert-danger" *ngIf="!availability"><label class="margin-left padding-left">No availability!</label></div>
-    <div class="text-center alert-danger" *ngIf="!classIsSelected"><label class="margin-left padding-left">Select a class first!</label></div>
-    <div class="text-center alert-danger" *ngIf="!validName"><label class="margin-left padding-left">Name should not be empty and should not contain special characters or integer</label></div>
-    <div class="text-center alert-danger" *ngIf="!validAge"><label class="margin-left padding-left">Age should not be empty and should only be integers</label></div>
+    <div class="text-center alert-danger error-top">
+      <div *ngIf="!availability"><label>No availability!</label></div>
+      <div *ngIf="!classIsSelected"><label>Select a class first!</label></div>
+      <div *ngIf="!validName"><label>Name should not be empty and should not contain special characters or integer</label></div>
+      <div *ngIf="!validAge"><label>Age should not be empty and should only be integers</label></div>
+    </div>
     <div *ngIf="!paymentSuccess" class="form-group right-details right top">
       <div>
         <label for="passengerName">Passenger name</label>
         <label>
           <input required [(ngModel)]="dataService.passengerDetails.passengername" ngModel name="passengerName" #passengerName="ngModel" id="passengerName" type="text" class="form-control-lg">
-          <label class="alert alert-danger text-center width float-right" *ngIf="passengerName.touched && !passengerName.valid">Name required</label>
+<!--          <label class="alert alert-danger text-center width float-right" *ngIf="passengerName.touched && !passengerName.valid">Name required</label>-->
         </label>
       </div>
       <div>
         <label class="left" for="passengerAge">Passenger age</label>
         <label>
           <input required [(ngModel)]="dataService.passengerDetails.passengerage" ngModel name="passengerAge" #passengerAge="ngModel" id="passengerAge" type="text" class="form-control-lg bottom">
-          <label class="alert alert-danger text-center width float-right" *ngIf="passengerAge.touched && !passengerAge.valid">Age required</label>
+<!--          <label class="alert alert-danger text-center width float-right" *ngIf="passengerAge.touched && !passengerAge.valid">Age required</label>-->
         </label>
       </div>
       <div class="right-submit">
