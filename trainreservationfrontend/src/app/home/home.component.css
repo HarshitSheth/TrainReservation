@@ -1,6 +1,6 @@
 .welcome{
   letter-spacing: 3px;
-  padding-top: 30px;
+  padding-top: 80px;
   font-size: xx-large;
   /*margin-top: 30px;*/
 }
@@ -12,14 +12,36 @@
 /*  margin-right: 25px;*/
 /*}*/
 
-.welcome-user-text{
+button{
+  margin: 0 5px 0 5px;
+  background-color: transparent;
+  border-width: 2px;
+  border-color: #00203FFF;
+  transition-duration: 0.4s;
+  border-radius: 5px;
+  height: 60px;
+}
+
+button:hover{
+  background-color: #00203FFF;
   color: white;
+  font-size: xx-large;
+}
+
+.welcome-user-text{
+  color: black;
+}
+
+div{
+  color: black;
 }
 
 .bg{
-  width: 100%;
+  margin-left: 8%;
+  width: 83%;
   height: 553px;
-  background: url('../../assets/train.jpg') no-repeat center;
-  background-size: cover;
-  background-position: top center;
+  background-color: #17a2b8;
+  /*background: url('../../assets/train.jpg') no-repeat center;*/
+  /*background-size: cover;*/
+  /*background-position: top center;*/
 }
