@@ -70,14 +70,14 @@ public class TrainreservationbackendApplicationTests {
 //        Assert.assertTrue(serviceClass.cancelReservation("10"));
 //    }
 
-    @Test
-    public void validateBookReservation(){
-        ReservationDetails classdetails = new ReservationDetails();
-        classdetails.setPassengername("harshit");
-        classdetails.setPassengerage("20");
-        classdetails.setClassname("general");
-        Assert.assertNotNull(serviceClass.bookReservation(classdetails));
-    }
+//    @Test
+//    public void validateBookReservation(){
+//        ReservationDetails classdetails = new ReservationDetails();
+//        classdetails.setPassengername("harshit");
+//        classdetails.setPassengerage("20");
+//        classdetails.setClassname("general");
+//        Assert.assertNotNull(serviceClass.bookReservation(classdetails));
+//    }
 
     @Test
     public void validatePayment(){
