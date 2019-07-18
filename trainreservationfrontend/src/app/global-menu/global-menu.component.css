@@ -1,24 +1,37 @@
 .topNav{
   /*float: left;*/
-  height: 71px;
-  text-align: center;
-  background: #00203FFF;
+  /*height: 71px;*/
+  /*text-align: center;*/
+  background: #00203FFF !important;
+  padding: 0 0 0 0;
 }
 
-.top{
-  margin-top: -100px;
-}
 button{
   border: none;
   background: #00203FFF;
-  color: white;
+  color: white !important;
   height: 70px;
   width: 167px;
-  /*width: 100%;*/
 }
 
 button:hover {
-  color: black;
+  color: black !important;
   background-color: gainsboro;
   font-size: 15px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+li a {
+  display: block;
+  color: #000;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #555;
+  color: white;
 }

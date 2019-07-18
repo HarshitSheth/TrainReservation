@@ -1,20 +1,85 @@
-<div class="topNav">
-  <div>
-    <button class="float-left" (click)="goToHome()">Home</button>
+<!--<nav class="topNav">-->
+<!--  <div>-->
+<!--    <button class="float-left" (click)="goToHome()">Home</button>-->
+<!--  </div>-->
+<!--  <div class="float-left" *ngIf="loggedIn()">-->
+<!--      <button (click)="goToReservation()">Book a reservation</button>-->
+<!--      <button (click)="goToPassengerDetails()">Get passenger details</button>-->
+<!--      <button (click)="goToCancelReservation()">Cancel reservation</button>-->
+<!--      <button (click)="goToClassAvailability()">Get availability</button>-->
+<!--  </div>-->
+<!--  <div *ngIf="loggedIn()">-->
+<!--    <button class="float-right" (click)="goToLogout()">Logout</button>-->
+<!--  </div>-->
+<!--  <div class="float-right" *ngIf="!loggedIn()">-->
+<!--    <button class="float-left" (click)="goToRegister()">Register</button>-->
+<!--    <button class="float-left" (click)="goToLogin()">Login</button>-->
+<!--  </div>-->
+<!--</nav>-->
+
+
+
+<!--***********************************************************************************-->
+<!--***********************************************************************************-->
+<!--***********************************************************************************-->
+<!--***********************************************************************************-->
+<!--***********************************************************************************-->
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<nav class="navbar navbar-expand-lg navbar-light bg-light topNav">
+  <button class="navbar-toggler" type="button" (click)="hamburgerClick()">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <button class="nav-link" (click)="goToHome()">Home</button>
+      </li>
+      <li class="nav-item" *ngIf="loggedIn()">
+        <button class="nav-link" (click)="goToReservation()">Book a reservation</button>
+      </li>
+      <li class="nav-item" *ngIf="loggedIn()">
+        <button class="nav-link" (click)="goToPassengerDetails()">Get passenger details</button>
+      </li>
+      <li class="nav-item" *ngIf="loggedIn()">
+        <button class="nav-link" (click)="goToCancelReservation()">Cancel reservation</button>
+      </li>
+      <li class="nav-item" *ngIf="loggedIn()">
+        <button class="nav-link" (click)="goToClassAvailability()">Get availability</button>
+      </li>
+    </ul>
+<!--  </div>-->
+<!--  <div class="collapse navbar-collapse">-->
+    <ul class="navbar-nav float-right">
+      <li class="nav-item" *ngIf="loggedIn()">
+        <button class="nav-link" (click)="goToLogout()">Logout</button>
+      </li>
+      <li class="nav-item" *ngIf="!loggedIn()">
+        <button class="nav-link float-right" (click)="goToRegister()">Register</button>
+      </li>
+      <li class="nav-item" *ngIf="!loggedIn()">
+        <button class="nav-link float-right" (click)="goToLogin()">Login</button>
+      </li>
+    </ul>
   </div>
-  <div class="float-left" *ngIf="loggedIn()">
-      <button (click)="goToReservation()">Book a reservation</button>
-      <button (click)="goToPassengerDetails()">Get passenger details</button>
-      <button (click)="goToCancelReservation()">Cancel reservation</button>
-      <button (click)="goToClassAvailability()">Get availability</button>
-  </div>
-  <div *ngIf="loggedIn()">
-    <button class="float-right" (click)="goToLogout()">Logout</button>
-  </div>
-  <div class="float-right" *ngIf="!loggedIn()">
-    <button class="float-left" (click)="goToRegister()">Register</button>
-    <button class="float-left" (click)="goToLogin()">Login</button>
-  </div>
+</nav>
+<div *ngIf="hamburger">
+  <ul *ngIf="loggedIn()">
+    <li><a (click)="goToHome()">Home</a></li>
+    <li><a (click)="goToReservation()">Book a Reservation</a></li>
+    <li><a (click)="goToPassengerDetails()">Get Passenger details</a></li>
+    <li><a (click)="goToCancelReservation()">Cancel Reservation</a></li>
+    <li><a (click)="goToClassAvailability()">Get Availability</a></li>
+    <li><a (click)="goToLogout()">Logout></a></li>
+  </ul>
+  <ul *ngIf="!loggedIn()">
+    <li><a (click)="goToRegister()">Register</a></li>
+    <li><a (click)="goToLogin()">Login</a></li>
+  </ul>
 </div>
+
+
 
 

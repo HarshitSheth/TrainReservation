@@ -14,7 +14,6 @@ import {AppComponent} from '../app.component';
 export class ReservationComponent implements OnInit {
 
   static className: string;
-  paymentAmount: number;
   validName = true;
   validAge = true;
   availability = true;
@@ -28,6 +27,7 @@ export class ReservationComponent implements OnInit {
     if (this.paymentSuccess) {
       this.verification = true;
       this.registerPassenger();
+      this.dataService.paymentAmount = 0;
     }
   }
 

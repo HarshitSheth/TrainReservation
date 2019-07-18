@@ -27,12 +27,8 @@
   height: 10px;
   border-color: #00203FFF;
   position:absolute;
-  bottom: 60px;
+  bottom: 0;
   right:0;
-}
-
-.cost-top{
-  margin-top: 70px;
 }
 
 .error-top{

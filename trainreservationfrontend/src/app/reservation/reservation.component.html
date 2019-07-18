@@ -1,98 +1,107 @@
-<table *ngIf="verifyLogin() && !paymentSuccess" class="custom-select-lg top" align="center">
-  <tr>
-    <td>
-        <label>Choose Class: </label>
-    </td>
-    <td>
-        <select (change)="classSelect($event)">
-          <option selected disabled hidden> Your Choice </option>
-          <option>Second Tier</option>
-          <option>Third Tier</option>
-          <option>Sleeper</option>
-          <option>General</option>
-        </select>
-    </td>
-  </tr>
-</table>
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <table *ngIf="verifyLogin() && !paymentSuccess" class="custom-select-lg top" align="center">
+        <tr>
+          <td>
+              <label>Choose Class: </label>
+          </td>
+          <td>
+              <select (change)="classSelect($event)">
+                <option selected disabled hidden> Your Choice </option>
+                <option>Second Tier</option>
+                <option>Third Tier</option>
+                <option>Sleeper</option>
+                <option>General</option>
+              </select>
+          </td>
+        </tr>
+      </table>
 
-<table *ngIf="!paymentSuccess" class="float-right left cost-top font-size table table-bordered" style="width: 350px">
-  <tr>
-    <th style="max-height: 5px">Class</th>
-    <th>Fare (Rs)</th>
-  </tr>
-  <tr>
-    <td>Second Tier</td>
-    <td>2000</td>
-  </tr>
-  <tr>
-    <td>Third Tier</td>
-    <td>1000</td>
-  </tr>
-  <tr>
-    <td>Sleeper</td>
-    <td>500</td>
-  </tr>
-  <tr>
-    <td>General</td>
-    <td>100</td>
-  </tr>
-</table>
-
-<form (ngSubmit)="validation()">
-  <div class="form-group">
-    <div *ngIf="verification && availability && paymentSuccess" class="text-center top-thank-you"><label class="margin-left"><pre>Thank you for reservation! Please find the details below.</pre></label></div>
-    <div class="text-center alert-danger error-top">
-      <div *ngIf="!availability"><label>No availability!</label></div>
-      <div *ngIf="!classIsSelected"><label>Select a class first!</label></div>
-      <div *ngIf="!validName"><label>Name should not be empty and should not contain special characters or integer</label></div>
-      <div *ngIf="!validAge"><label>Age should not be empty and should only be integers</label></div>
+      <form (ngSubmit)="validation()" align="center">
+        <div class="form-group">
+<!--          <div *ngIf="verification && availability && paymentSuccess" class="text-center top-thank-you"><label class="margin-left"><pre>Thank you for reservation! Please find the details below.</pre></label></div>-->
+          <div class="text-center alert-danger error-top">
+            <div *ngIf="!availability"><label>No availability!</label></div>
+            <div *ngIf="!classIsSelected"><label>Select a class first!</label></div>
+            <div *ngIf="!validName"><label>Name should not be empty and should not contain special characters or integer</label></div>
+            <div *ngIf="!validAge"><label>Age should not be empty and should only be integers</label></div>
+          </div>
+          <div *ngIf="!paymentSuccess" class="form-group top">
+            <div>
+              <label for="passengerName">Passenger name</label>
+              <label>
+                <input required [(ngModel)]="dataService.passengerDetails.passengername" ngModel name="passengerName" #passengerName="ngModel" id="passengerName" type="text" class="form-control-lg">
+      <!--          <label class="alert alert-danger text-center width float-right" *ngIf="passengerName.touched && !passengerName.valid">Name required</label>-->
+              </label>
+            </div>
+            <div>
+              <label class="left" for="passengerAge">Passenger age</label>
+              <label>
+                <input required [(ngModel)]="dataService.passengerDetails.passengerage" ngModel name="passengerAge" #passengerAge="ngModel" id="passengerAge" type="text" class="form-control-lg bottom">
+      <!--          <label class="alert alert-danger text-center width float-right" *ngIf="passengerAge.touched && !passengerAge.valid">Age required</label>-->
+              </label>
+            </div>
+            <div>
+              <label>
+                <button type="submit" class="btn btn-primary top">Submit</button>
+              </label>
+            </div>
+          </div>
+        </div>
+      </form>
     </div>
-    <div *ngIf="!paymentSuccess" class="form-group right-details right top">
-      <div>
-        <label for="passengerName">Passenger name</label>
-        <label>
-          <input required [(ngModel)]="dataService.passengerDetails.passengername" ngModel name="passengerName" #passengerName="ngModel" id="passengerName" type="text" class="form-control-lg">
-<!--          <label class="alert alert-danger text-center width float-right" *ngIf="passengerName.touched && !passengerName.valid">Name required</label>-->
-        </label>
-      </div>
-      <div>
-        <label class="left" for="passengerAge">Passenger age</label>
-        <label>
-          <input required [(ngModel)]="dataService.passengerDetails.passengerage" ngModel name="passengerAge" #passengerAge="ngModel" id="passengerAge" type="text" class="form-control-lg bottom">
-<!--          <label class="alert alert-danger text-center width float-right" *ngIf="passengerAge.touched && !passengerAge.valid">Age required</label>-->
-        </label>
-      </div>
-      <div class="right-submit">
-        <label>
-          <button type="submit" class="btn btn-primary top">Submit</button>
-        </label>
+
+    <div class="col-sm">
+      <div *ngIf="availability && paymentSuccess">
+        <div *ngIf="verification && availability && paymentSuccess" class="text-center top-thank-you"><label class="margin-left"><pre>Thank you for reservation! Please find the details below.</pre></label></div>
+        <table align="center" class="form-group fit bg-info top">
+          <tr>
+            <th class="text-center">PNR</th>
+            <th class="text-center">Passenger Name</th>
+            <th class="text-center">Passenger Age</th>
+            <th class="text-center">Travel Class</th>
+            <th class="text-center">Coach Number</th>
+            <th class="text-center">Seat Number</th>
+          </tr>
+          <tr>
+            <td class="text-center">{{dataService.passengerDetails.pnr}}</td>
+            <td class="text-center">{{dataService.passengerDetails.passengername}}</td>
+            <td class="text-center">{{dataService.passengerDetails.passengerage}}</td>
+            <td class="text-center">{{dataService.passengerDetails.classname}}</td>
+            <td class="text-center">{{dataService.passengerDetails.coach}}</td>
+            <td class="text-center">{{dataService.passengerDetails.seatnumber}}</td>
+          </tr>
+        </table>
+        <div align="center" class="top">
+          <label><h4>To reserve another seat, click <button (click)="refresh()">here</button></h4></label>
+        </div>
       </div>
     </div>
-  </div>
-</form>
 
-<div *ngIf="availability && paymentSuccess">
-  <table align="center" class="form-group fit bg-info top">
-    <tr>
-      <th class="text-center">PNR</th>
-      <th class="text-center">Passenger Name</th>
-      <th class="text-center">Passenger Age</th>
-      <th class="text-center">Travel Class</th>
-      <th class="text-center">Coach Number</th>
-      <th class="text-center">Seat Number</th>
-    </tr>
-    <tr>
-      <td class="text-center">{{dataService.passengerDetails.pnr}}</td>
-      <td class="text-center">{{dataService.passengerDetails.passengername}}</td>
-      <td class="text-center">{{dataService.passengerDetails.passengerage}}</td>
-      <td class="text-center">{{dataService.passengerDetails.classname}}</td>
-      <td class="text-center">{{dataService.passengerDetails.coach}}</td>
-      <td class="text-center">{{dataService.passengerDetails.seatnumber}}</td>
-    </tr>
-  </table>
-  <div align="center" class="top">
-    <label><h4>To reserve another seat, click <button (click)="refresh()">here</button></h4></label>
+    <div class="col-sm">
+      <table *ngIf="!paymentSuccess" class="float-right left cost-top font-size table table-bordered" style="width: 350px">
+        <tr>
+          <th style="max-height: 5px">Class</th>
+          <th>Fare (Rs)</th>
+        </tr>
+        <tr>
+          <td>Second Tier</td>
+          <td>2000</td>
+        </tr>
+        <tr>
+          <td>Third Tier</td>
+          <td>1000</td>
+        </tr>
+        <tr>
+          <td>Sleeper</td>
+          <td>500</td>
+        </tr>
+        <tr>
+          <td>General</td>
+          <td>100</td>
+        </tr>
+      </table>
+    </div>
   </div>
 </div>
-
-<!--</div>-->
