@@ -80,7 +80,7 @@
     </div>
 
     <div class="col-sm">
-      <table *ngIf="!paymentSuccess" class="float-right left cost-top font-size table table-bordered" style="width: 350px">
+      <table *ngIf="!paymentSuccess" class="float-right left font-size table table-bordered" style="width: 350px">
         <tr>
           <th style="max-height: 5px">Class</th>
           <th>Fare (Rs)</th>
@@ -105,3 +105,101 @@
     </div>
   </div>
 </div>
+
+
+<!--*****************-->
+<!--*****************-->
+<!--*****************-->
+
+<!--
+<div class="container-fluid">
+  <div class="row">
+    <div class="card-deck">
+      <div class="card">
+        <div class="card-block">
+          <h4 class="card-title">Card title</h4>
+          <div class="col-sm">
+            <table *ngIf="verifyLogin() && !paymentSuccess" class="custom-select-lg top" align="center">
+              <tr>
+                <td>
+                  <label>Choose Class: </label>
+                </td>
+                <td>
+                  <select (change)="classSelect($event)">
+                    <option selected disabled hidden> Your Choice </option>
+                    <option>Second Tier</option>
+                    <option>Third Tier</option>
+                    <option>Sleeper</option>
+                    <option>General</option>
+                  </select>
+                </td>
+              </tr>
+            </table>
+
+            <form (ngSubmit)="validation()" align="center">
+              <div class="form-group">
+                &lt;!&ndash;          <div *ngIf="verification && availability && paymentSuccess" class="text-center top-thank-you"><label class="margin-left"><pre>Thank you for reservation! Please find the details below.</pre></label></div>&ndash;&gt;
+                <div class="text-center alert-danger error-top">
+                  <div *ngIf="!availability"><label>No availability!</label></div>
+                  <div *ngIf="!classIsSelected"><label>Select a class first!</label></div>
+                  <div *ngIf="!validName"><label>Name should not be empty and should not contain special characters or integer</label></div>
+                  <div *ngIf="!validAge"><label>Age should not be empty and should only be integers</label></div>
+                </div>
+                <div *ngIf="!paymentSuccess" class="form-group top">
+                  <div>
+                    <label for="passengerName">Passenger name</label>
+                    <label>
+                      <input required [(ngModel)]="dataService.passengerDetails.passengername" ngModel name="passengerName" #passengerName="ngModel" id="passengerName" type="text" class="form-control-lg">
+                      &lt;!&ndash;          <label class="alert alert-danger text-center width float-right" *ngIf="passengerName.touched && !passengerName.valid">Name required</label>&ndash;&gt;
+                    </label>
+                  </div>
+                  <div>
+                    <label class="left" for="passengerAge">Passenger age</label>
+                    <label>
+                      <input required [(ngModel)]="dataService.passengerDetails.passengerage" ngModel name="passengerAge" #passengerAge="ngModel" id="passengerAge" type="text" class="form-control-lg bottom">
+                      &lt;!&ndash;          <label class="alert alert-danger text-center width float-right" *ngIf="passengerAge.touched && !passengerAge.valid">Age required</label>&ndash;&gt;
+                    </label>
+                  </div>
+                  <div>
+                    <label>
+                      <button type="submit" class="btn btn-primary top">Submit</button>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-block">
+          <h4 class="card-title">Card title</h4>
+          <div class="col-sm">
+            <table *ngIf="!paymentSuccess" class="float-right left cost-top font-size table table-bordered" style="width: 350px">
+              <tr>
+                <th style="max-height: 5px">Class</th>
+                <th>Fare (Rs)</th>
+              </tr>
+              <tr>
+                <td>Second Tier</td>
+                <td>2000</td>
+              </tr>
+              <tr>
+                <td>Third Tier</td>
+                <td>1000</td>
+              </tr>
+              <tr>
+                <td>Sleeper</td>
+                <td>500</td>
+              </tr>
+              <tr>
+                <td>General</td>
+                <td>100</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>-->
