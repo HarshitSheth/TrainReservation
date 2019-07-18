@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 
 
 export class AppComponent {
-  springBoot = 'http://localhost:8080';
+  springBoot = 'http://13.126.191.183:8080';
   title = 'Welcome to Train Reservation!';
 }
 

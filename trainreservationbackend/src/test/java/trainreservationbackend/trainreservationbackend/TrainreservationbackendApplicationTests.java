@@ -57,7 +57,7 @@ public class TrainreservationbackendApplicationTests {
     @Test
     public void validatePassengerDetails(){
         ReservationDetails reservationDetails = serviceClass.getPassengerDetails("10");
-        Assert.assertNull(reservationDetails);
+        Assert.assertNotNull(reservationDetails);
     }
 
     @Test
