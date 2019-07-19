@@ -4,6 +4,7 @@
   /*text-align: center;*/
   background: #00203FFF !important;
   padding: 0 0 0 0;
+  min-width: 100%;
 }
 
 button{
