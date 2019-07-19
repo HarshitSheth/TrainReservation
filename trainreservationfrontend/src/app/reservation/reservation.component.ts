@@ -85,7 +85,7 @@ export class ReservationComponent implements OnInit {
         }
       }
       if (this.verification) {
-        const url = 'http://locahhost:8080/verifyClassAvailability';
+        const url = 'http://localhost:8080/verifyClassAvailability';
         this.dataService.passengerDetails.classname = ReservationComponent.className;
         this.http.post<boolean>(url, this.dataService.passengerDetails.classname).subscribe(
           res => {
@@ -106,7 +106,7 @@ export class ReservationComponent implements OnInit {
 }
 
   registerPassenger() {
-      const url = 'http://locahhost:8080/reservation';
+      const url = 'http://localhost:8080/reservation';
       this.http.post<Classdetails>(url, this.dataService.passengerDetails).subscribe(
         res => {
           if (null != res) {
