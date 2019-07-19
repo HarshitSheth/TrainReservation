@@ -24,12 +24,12 @@ a{
 }
 
 .register-button{
-  margin-top: -25px;
+  margin-top: -30px;
   color: white !important;
   border-style: solid;
   background-color: #17a2b8;
   border-radius: 5px;
-  height: 42px;
+  height: 40px;
 }
 
 .register-button:hover{

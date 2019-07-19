@@ -11,7 +11,6 @@ import {AppComponent} from '../app.component';
 })
 export class RegisterComponent implements OnInit {
 
-  emptyEntry = false;
   validName = true;
   validEmail = true;
   validContact = true;
@@ -84,10 +83,7 @@ export class RegisterComponent implements OnInit {
   }
 
   validateName(): boolean {
-    if (this.registerUser.name.match('^$')) {
-      this.emptyEntry = true;
-      return false;
-    } else if (!this.registerUser.name.match('^[a-zA-Z]+(\\s[a-zA-Z]+)*$')) {
+    if (!this.registerUser.name.match('^[a-zA-Z]+(\\s[a-zA-Z]+)*$')) {
       return false;
     } else {
       return true;

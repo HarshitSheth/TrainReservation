@@ -15,7 +15,6 @@
             <div class="form-group">
               <label for="name" class="cols-sm-2 control-label">Your Name <span style="color: red">*</span></label>
               <label *ngIf="!validName" class="float-right alert-danger">Invalid name</label>
-              <label *ngIf="emptyEntry" class="float-right alert-danger">Can't leave blank</label>
               <div class="cols-sm-10">
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
@@ -26,7 +25,6 @@
             <div class="form-group">
               <label for="email" class="cols-sm-2 control-label">Your Email <span style="color: red">*</span></label>
               <label *ngIf="!validEmail" class="float-right alert-danger">Invalid email</label>
-              <label *ngIf="emptyEntry" class="float-right alert-danger">Can't leave blank</label>
               <div class="cols-sm-10">
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
@@ -37,7 +35,6 @@
             <div class="form-group">
               <label for="phone" class="cols-sm-2 control-label">Contact Number <span style="color: red">*</span></label>
               <label *ngIf="!validContact" class="float-right alert-danger">Invalid contact</label>
-              <label *ngIf="emptyEntry" class="float-right alert-danger">Can't leave blank</label>
               <div class="cols-sm-10">
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
@@ -48,7 +45,6 @@
             <div class="form-group">
               <label for="username" class="cols-sm-2 control-label">Username <span style="color: red">*</span></label>
               <label *ngIf="!validUserName" class="float-right alert-danger">Invalid user name</label>
-              <label *ngIf="emptyEntry" class="float-right alert-danger">Can't leave blank</label>
               <label *ngIf="validUserName && !availableUser" class="float-right alert-danger">Username is already taken</label>
               <div class="cols-sm-10">
                 <div class="input-group">
@@ -60,7 +56,6 @@
             <div class="form-group">
               <label for="password" class="cols-sm-2 control-label">Password <span style="color: red">*</span></label>
               <label *ngIf="!validPassword" class="float-right alert-danger">Invalid password</label>
-              <label *ngIf="emptyEntry" class="float-right alert-danger">Can't leave blank</label>
               <div class="cols-sm-10">
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
@@ -71,7 +66,6 @@
             <div class="form-group">
               <label for="confirm" class="cols-sm-2 control-label">Confirm Password <span style="color: red">*</span></label>
               <label *ngIf="!validConfirmPass" class="float-right alert-danger">Incorrect confirm password</label>
-              <label *ngIf="emptyEntry" class="float-right alert-danger">Can't leave blank</label>
               <div class="cols-sm-10">
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>

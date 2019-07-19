@@ -37,10 +37,10 @@ export class AvailabilityComponent implements OnInit {
   classSelect($event: any) {
     ReservationComponent.className = $event.target.value;
     this.classChoice = $event.target.value;
-    this.classIsSelected = true;
     const url = 'http://13.126.191.183:8080/getAvailability';
     this.http.post<Classinformation>(url, ReservationComponent.className).subscribe(
       res => {
+        this.classIsSelected = true;
         this.classinfo = res;
       },
     );

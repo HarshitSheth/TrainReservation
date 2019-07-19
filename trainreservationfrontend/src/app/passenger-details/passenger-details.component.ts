@@ -34,12 +34,12 @@ export class PassengerDetailsComponent implements OnInit {
 
   public fetchPassenger(pnr): PassengerDetailsComponent {
     if (this.validatePnr()) {
-      this.verification = true;
       const url = 'http://13.126.191.183:8080/passengerDetails';
       this.http.post<Classdetails>(url, pnr).subscribe(
         res => {
           if (null != res && null != res.passengername) {
             this.passengerDetails = res;
+            this.verification = true;
             return this.passengerDetails;
           } else {
             this.validPnr = false;
