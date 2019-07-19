@@ -1,33 +1,37 @@
-.form-control{
-  width: -webkit-fill-available;
-}
+/*.form-control{*/
+/*  width: -webkit-fill-available;*/
+/*}*/
 
-.right{
-  margin-right: 41%;
-}
+/*.right{*/
+/*  margin-right: 41%;*/
+/*}*/
 
 
 
-.width{
-  width: 70%;
-}
+/*.width{*/
+/*  width: 70%;*/
+/*}*/
 
-.fit{
-  width: 100%;
-}
+/*.fit{*/
+/*  width: 100%;*/
+/*}*/
 
-.top {
-  margin-top: 50px;
-}
+/*.top {*/
+/*  margin-top: 50px;*/
+/*}*/
 
-.top-submit{
-  margin-top: 20px;
-}
+/*.top-submit{*/
+/*  margin-top: 20px;*/
+/*}*/
 
-.button{
-  padding-left: 47%;
-}
+/*.button{*/
+/*  padding-left: 47%;*/
+/*}*/
 
-.height{
-  height: 30px;
+/*.height{*/
+/*  height: 30px;*/
+/*}*/
+
+.card{
+  border: none;
 }

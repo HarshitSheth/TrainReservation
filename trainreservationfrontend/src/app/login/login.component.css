@@ -3,7 +3,7 @@ body {
   background-color: #17a2b8;
   height: -webkit-fill-available;
   width: 84%;
-  margin: 0 0 0 110px;
+  margin: 0 0 0 8%;
 }
 
 .warning{
@@ -54,3 +54,5 @@ a{
 .bottom{
   padding-top: 40px;
 }
+
+

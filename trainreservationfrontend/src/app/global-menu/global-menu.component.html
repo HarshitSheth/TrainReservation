@@ -27,7 +27,7 @@
 
 
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light topNav">
   <button class="navbar-toggler" type="button" (click)="hamburgerClick()">
     <span class="navbar-toggler-icon"></span>
@@ -75,6 +75,7 @@
     <li><a (click)="goToLogout()">Logout</a></li>
   </ul>
   <ul *ngIf="!loggedIn()">
+    <li><a (click)="goToHome()">Home</a></li>
     <li><a (click)="goToRegister()">Register</a></li>
     <li><a (click)="goToLogin()">Login</a></li>
   </ul>
