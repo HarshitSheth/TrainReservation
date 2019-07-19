@@ -55,7 +55,7 @@ export class RegisterComponent implements OnInit {
       !this.validPassword || !this.validConfirmPass || !this.availableUser) {
       return;
     } else {
-      const url = 'http://13.126.191.183:8080/register';
+      const url = 'http://locahhost:8080/register';
       this.http.post<boolean>(url, this.registerUser).subscribe(
         res => {
           if (res) {
@@ -69,7 +69,7 @@ export class RegisterComponent implements OnInit {
   }
 
   userNameAvailability() {
-    const url = 'http://13.126.191.183:8080/usernameAvailability';
+    const url = 'http://locahhost:8080/usernameAvailability';
     this.http.post<boolean>(url, this.registerUser.username).subscribe(
       res => {
         if (!res) {
