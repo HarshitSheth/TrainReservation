@@ -34,6 +34,11 @@
   border: none;
 }
 
+.fit{
+  width: 100%;
+}
+
+
 /*.error-margin{*/
 /*  !*margin-top: 10%;*!*/
 /*  margin-bottom: 5px;*/

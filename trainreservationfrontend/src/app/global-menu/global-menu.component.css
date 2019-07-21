@@ -1,10 +1,11 @@
 .topNav{
-  /*float: left;*/
-  /*height: 71px;*/
-  /*text-align: center;*/
   background: #00203FFF !important;
   padding: 0 0 0 0;
   min-width: 100%;
+}
+
+body{
+  margin: 0;
 }
 
 button{
