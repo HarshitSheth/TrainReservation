@@ -79,7 +79,7 @@ export class PaymentComponent implements OnInit {
   }
 
   validateCardNumber(): boolean {
-    if (!this.cardnumber.match('^[0-9]{16}$')) {
+    if (!this.cardnumber.match('^[0-9]{16}$') || this.cardnumber.match('^[0]{16}$')) {
       return false;
     } else {
       return true;

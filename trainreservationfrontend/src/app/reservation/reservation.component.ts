@@ -130,7 +130,8 @@ export class ReservationComponent implements OnInit {
   }
 
   validateAge(): boolean {
-    if (!this.dataService.passengerDetails.passengerage.match('^[0-9]+$')) {
+    if (this.dataService.passengerDetails.passengerage.match('^[0]+$') ||
+      !this.dataService.passengerDetails.passengerage.match('^[0-9]+$')) {
       this.validAge = false;
       return false;
     } else {

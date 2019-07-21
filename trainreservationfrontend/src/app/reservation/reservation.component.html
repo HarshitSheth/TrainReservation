@@ -24,8 +24,8 @@
           <div class="text-center alert-danger error-top">
             <div *ngIf="!availability"><label>No availability!</label></div>
             <div *ngIf="!classIsSelected"><label>Select a class first!</label></div>
-            <div *ngIf="!validName"><label>Name should not be empty and should not contain special characters or integer</label></div>
-            <div *ngIf="!validAge"><label>Age should not be empty and should only be integers</label></div>
+            <div *ngIf="!validName"><label>Invalid Name</label></div>
+            <div *ngIf="!validAge"><label>Invalid Age</label></div>
           </div>
           <div *ngIf="!paymentSuccess" class="form-group top">
             <div>

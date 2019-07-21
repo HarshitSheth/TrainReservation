@@ -28,7 +28,7 @@
               <div class="cols-sm-10">
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-                  <input required [(ngModel)]="registerUser.email" ngModel #email="ngModel" type="text" class="form-control" name="email" id="email" placeholder="Enter your Email" />
+                  <input required [(ngModel)]="registerUser.email" ngModel #email="ngModel" type="email" class="form-control" name="email" id="email" placeholder="Enter your Email" />
                 </div>
               </div>
             </div>
@@ -55,11 +55,11 @@
             </div>
             <div class="form-group">
               <label for="password" class="cols-sm-2 control-label">Password <span style="color: red">*</span></label>
-              <label *ngIf="!validPassword" class="float-right alert-danger">Invalid password</label>
               <div class="cols-sm-10">
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
                   <input required [(ngModel)]="registerUser.password" ngModel #password="ngModel" type="password" class="form-control width" name="password" id="password" placeholder="Enter your Password" />
+                  <label *ngIf="!validPassword" class="alert-danger">Password must contain at least 1 Uppercase, 1 Lowercase, 1 digit, 1 special character and minimum 8 characters long</label>
                 </div>
               </div>
             </div>
