@@ -4,9 +4,10 @@
     <div align="center" class="welcome"><strong>Maharaja Express Train Reservation Portal</strong></div>
     <div *ngIf="!existingUser" align="center" class="welcome"><h2>Please <button (click)="goToLogin()">Login</button>/<button (click)="goToRegister()">Register</button> to continue</h2></div>
     <div *ngIf="existingUser" class="text-center display-4 top welcome-user-text">
-      <br><br>
+      <br>
       <h3>Welcome {{user.toUpperCase()}}!</h3>
-
+      <br>
+      <h3>Book a reservation? Click <button (click)="goToReservation()">here</button></h3>
     </div>
   </div>
   </body>

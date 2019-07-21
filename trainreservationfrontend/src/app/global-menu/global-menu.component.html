@@ -29,10 +29,14 @@
 
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light topNav">
-  <button class="navbar-toggler" type="button" (click)="hamburgerClick()">
+  <button class="navbar-toggler hamburger-icon" type="button" (click)="hamburgerClick()">
     <span class="navbar-toggler-icon"></span>
   </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <button class="navbar-toggler container" type="button" (click)="goToHome()">
+    <div>Maharaja Express</div>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
         <button class="nav-link" (click)="goToHome()">Home</button>
@@ -50,8 +54,6 @@
         <button class="nav-link" (click)="goToClassAvailability()">Get availability</button>
       </li>
     </ul>
-<!--  </div>-->
-<!--  <div class="collapse navbar-collapse">-->
     <ul class="navbar-nav float-right">
       <li class="nav-item" *ngIf="loggedIn()">
         <button class="nav-link" (click)="goToLogout()">Logout</button>
@@ -66,7 +68,7 @@
   </div>
 </nav>
 <div *ngIf="hamburger">
-  <ul *ngIf="loggedIn()">
+  <ul *ngIf="loggedIn()" class="hamburger-body">
     <li><a (click)="goToHome()">Home</a></li>
     <li><a (click)="goToReservation()">Book a Reservation</a></li>
     <li><a (click)="goToPassengerDetails()">Get Passenger details</a></li>
@@ -74,7 +76,7 @@
     <li><a (click)="goToClassAvailability()">Get Availability</a></li>
     <li><a (click)="goToLogout()">Logout</a></li>
   </ul>
-  <ul *ngIf="!loggedIn()">
+  <ul *ngIf="!loggedIn()" class="hamburger-body">
     <li><a (click)="goToHome()">Home</a></li>
     <li><a (click)="goToRegister()">Register</a></li>
     <li><a (click)="goToLogin()">Login</a></li>

@@ -41,3 +41,14 @@ li a:hover {
 .navbar-toggler-icon{
   background-color: white !important;
 }
+
+.hamburger-icon{
+  width: 60px !important;
+}
+
+.hamburger-body{
+  border-style: solid;
+  border-radius: 5px;
+  border-color: #00203FFF;
+}
+
