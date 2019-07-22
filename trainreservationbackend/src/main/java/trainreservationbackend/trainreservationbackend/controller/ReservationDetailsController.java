@@ -32,6 +32,21 @@ public class ReservationDetailsController {
         return serviceClass.getPassengerDetails(pnr);
     }
 
+    @RequestMapping("/seatsPerCabin")
+    public String className(@RequestBody String className, Model model){
+        return serviceClass.seatsPerCabin(className);
+    }
+
+    @RequestMapping("/passengerPerSeat")
+    public String passengerPerSeat(@RequestBody String className, Model model){
+        return serviceClass.passengerPerSeat(className);
+    }
+
+    @RequestMapping("/classAc")
+    public boolean classAc(@RequestBody String className, Model model){
+        return serviceClass.classAc(className);
+    }
+
     @PostMapping(value = "/cancelReservation")
     public boolean cancel(@RequestBody String pnr, Model model){
         return reservationDetailsCRUDService.deleteFromDB(pnr);

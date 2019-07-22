@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
+import {PaymentComponent} from '../payment/payment.component';
 
 @Component({
   selector: 'app-global-menu',
@@ -25,6 +26,7 @@ export class GlobalMenuComponent implements OnInit {
   }
 
   goToReservation() {
+    PaymentComponent.paymentSuccess = false;
     this.router.navigate(['reservation']);
     this.hamburger = false;
   }

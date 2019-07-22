@@ -13,7 +13,6 @@ export class DataServiceService {
       passengername: '',
       passengerage: '',
     };
-  obj2: Classdetails;
 
   constructor() { }
 

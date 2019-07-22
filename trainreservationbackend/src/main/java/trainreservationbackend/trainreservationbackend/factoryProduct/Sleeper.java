@@ -19,6 +19,21 @@ public class Sleeper implements TravelClass{
     }
 
     @Override
+    public boolean ac(){
+        return false;
+    }
+
+    @Override
+    public String seatsPerCabin() {
+        return "2";
+    }
+
+    @Override
+    public String passengerPerSeat() {
+        return "1";
+    }
+
+    @Override
     public int getClassAvailability() {
         return classInformationCRUDService.getFromDBByID("sleeper").getAvailability();
     }

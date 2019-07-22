@@ -1,6 +1,5 @@
 package trainreservationbackend.trainreservationbackend.service;
 
-import org.jasypt.util.text.BasicTextEncryptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import trainreservationbackend.trainreservationbackend.dao.*;
@@ -104,6 +103,24 @@ public class ServiceClass {
         ClassInformation classinformation = classInformationCRUDService.getFromDBByID(travelClass.getClassNameLowerCase());
         classinformation.setClassname(travelClass.getClassNameUpperCase());
         return classinformation;
+    }
+
+    public String seatsPerCabin(String className){
+        TravelClassFactory travelClassFactory = TravelClassObjectFactory.getObjectFactory().getTravelClassObject(className);
+        TravelClass travelClass = travelClassFactory.getTravelClass();
+        return travelClass.seatsPerCabin();
+    }
+
+    public String passengerPerSeat(String className){
+        TravelClassFactory travelClassFactory = TravelClassObjectFactory.getObjectFactory().getTravelClassObject(className);
+        TravelClass travelClass = travelClassFactory.getTravelClass();
+        return travelClass.passengerPerSeat();
+    }
+
+    public boolean classAc(String className){
+        TravelClassFactory travelClassFactory = TravelClassObjectFactory.getObjectFactory().getTravelClassObject(className);
+        TravelClass travelClass = travelClassFactory.getTravelClass();
+        return travelClass.ac();
     }
 
     public ReservationDetails getPassengerDetails(String pnr){

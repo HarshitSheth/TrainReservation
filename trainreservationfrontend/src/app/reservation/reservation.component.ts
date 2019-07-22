@@ -20,6 +20,10 @@ export class ReservationComponent implements OnInit {
   verification = false;
   classChoice: string;
   classIsSelected = true;
+  ac = null;
+  seatsPerCabin = null;
+  passengerPerSeat = null;
+  reservationSuccess = false;
   constructor(private router: Router, private http: HttpClient, private dataService: DataServiceService, private app: AppComponent) {
   }
 
@@ -31,6 +35,9 @@ export class ReservationComponent implements OnInit {
     }
   }
 
+  get paymentAmount() {
+    return this.dataService.paymentAmount;
+  }
   verifyLogin(): boolean {
     if (null != sessionStorage.getItem('userData')) {
       return true;
@@ -53,6 +60,28 @@ export class ReservationComponent implements OnInit {
     this.classChoice = $event.target.value;
     this.setPaymentAmount(this.classChoice);
     this.classIsSelected = this.dataService.paymentAmount !== 0;
+    const url = 'http://13.126.191.183:8080/classAc';
+    this.http.post<boolean>(url, ReservationComponent.className).subscribe(
+      res => {
+        if (res) {
+          this.ac = 'Yes';
+        } else {
+          this.ac = 'No';
+        }
+      }
+    );
+    const url1 = 'http://13.126.191.183:8080/seatsPerCabin';
+    this.http.post<string>(url1, ReservationComponent.className).subscribe(
+      res => {
+          this.seatsPerCabin = res;
+      }
+    );
+    const url2 = 'http://13.126.191.183:8080/passengerPerSeat';
+    this.http.post<boolean>(url2, ReservationComponent.className).subscribe(
+      res => {
+        this.passengerPerSeat = res;
+      }
+    );
   }
 
   setPaymentAmount(classchoice: string) {
@@ -111,7 +140,9 @@ export class ReservationComponent implements OnInit {
         res => {
           if (null != res) {
             this.dataService.passengerDetails = res;
+            this.reservationSuccess = true;
           } else {
+            this.reservationSuccess = false;
             return;
           }
         }
@@ -139,10 +170,6 @@ export class ReservationComponent implements OnInit {
       return true;
     }
   }
-
-  // goToReservation() {
-  //   this.router.navigate(['reservation']);
-  // }
 
   refresh() {
     PaymentComponent.paymentSuccess = false;

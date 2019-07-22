@@ -26,6 +26,18 @@ public class TrainreservationbackendApplicationTests {
     @Autowired
     PaymentInformationCRUDService paymentInformationCRUDService;
 
+
+    @Test
+    public void checkUserRegistration(){
+        Login login = new Login();
+        login.setUsername("username");
+        login.setName("name");
+        login.setPassword("abcd");
+        login.setEmail("email@email.com");
+        login.setContact("9999999999");
+        Assert.assertTrue(serviceClass.validateUser(login));
+    }
+
     @Test
     public void checkTrueUserValidation(){
         Login login = new Login();
@@ -45,39 +57,25 @@ public class TrainreservationbackendApplicationTests {
     }
 
     @Test
-    public void checkUserRegistration(){
-        Login login = new Login();
-        login.setUsername("username");
-        login.setName("name");
-        login.setPassword("abcd");
-        login.setEmail("email@email.com");
-        Assert.assertTrue(serviceClass.validateUser(login));
+    public void validateBookReservation(){
+        ReservationDetails classdetails = new ReservationDetails();
+        classdetails.setPassengername("harshit");
+        classdetails.setPassengerage("20");
+        classdetails.setClassname("third tier");
+        Assert.assertEquals(ReservationDetails.class, serviceClass.bookReservation(classdetails).getClass());
     }
-
-//    @Test
-//    public void validatePassengerDetails(){
-//        ReservationDetails reservationDetails = serviceClass.getPassengerDetails("10");
-//        Assert.assertNotNull(reservationDetails);
-//    }
 
     @Test
     public void validateFalseCancelReservation(){
         Assert.assertFalse(serviceClass.cancelReservation("40"));
     }
 
-//    @Test
-//    public void validateTrueCancelReservation(){
-//        Assert.assertTrue(serviceClass.cancelReservation("10"));
-//    }
 
-//    @Test
-//    public void validateBookReservation(){
-//        ReservationDetails classdetails = new ReservationDetails();
-//        classdetails.setPassengername("harshit");
-//        classdetails.setPassengerage("20");
-//        classdetails.setClassname("general");
-//        Assert.assertNotNull(serviceClass.bookReservation(classdetails));
-//    }
+    @Test
+    public void validateFalsePassengerDetails(){
+        ReservationDetails reservationDetails = serviceClass.getPassengerDetails("40");
+        Assert.assertNull(reservationDetails);
+    }
 
     @Test
     public void validatePayment(){
@@ -86,5 +84,16 @@ public class TrainreservationbackendApplicationTests {
         paymentInformation.setPaymentamount(1000);
         Assert.assertTrue(paymentInformationCRUDService.saveToDB(paymentInformation));
     }
+
+    //    @Test
+//    public void validateTruePassengerDetails(){
+//        ReservationDetails reservationDetails = serviceClass.getPassengerDetails("10");
+//        Assert.assertEquals(ReservationDetails.class, reservationDetails.getClass());
+//    }
+
+    //    @Test
+//    public void validateTrueCancelReservation(){
+//        Assert.assertTrue(serviceClass.cancelReservation("10"));
+//    }
 
 }

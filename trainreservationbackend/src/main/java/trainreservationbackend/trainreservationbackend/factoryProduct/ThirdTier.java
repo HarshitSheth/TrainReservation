@@ -19,6 +19,21 @@ public class ThirdTier implements TravelClass{
     }
 
     @Override
+    public boolean ac(){
+        return true;
+    }
+
+    @Override
+    public String seatsPerCabin() {
+        return "2";
+    }
+
+    @Override
+    public String passengerPerSeat() {
+        return "1";
+    }
+
+    @Override
     public int getClassAvailability() {
         return classInformationCRUDService.getFromDBByID("Third Tier").getAvailability();
     }

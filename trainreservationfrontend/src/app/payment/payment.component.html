@@ -10,7 +10,7 @@
   </div>
   <div>
     <label>
-      <input required [(ngModel)]="cardnumber" ngModel name="cardNumber" id="cardNumber" style="width: 423px" class="float-left form-control-lg" placeholder="Card Number">
+      <input required [(ngModel)]="cardnumber" maxlength="16" ngModel name="cardNumber" id="cardNumber" style="width: 423px" class="float-left form-control-lg" placeholder="xxxx xxxx xxxx xxxx">
       <label *ngIf="!validCardNumber" class="alert-danger">Invalid card number</label>
     </label>
   </div>
@@ -24,15 +24,15 @@
   </div>
   <div>
     <label class="float-left">
-      <input required [(ngModel)]="expirymonth" ngModel name="expirymonth" id="expirymonth" style="width: 100px;" class="form-control-lg" placeholder="Month">
+      <input required [(ngModel)]="expirymonth" maxlength="2" ngModel name="expirymonth" id="expirymonth" style="width: 100px;" class="form-control-lg" placeholder="MM">
       <div *ngIf="!validExpiryMonth" class="alert-danger">Invalid month</div>
     </label>
     <label>
-      <input required [(ngModel)]="expiryyear" ngModel name="expiryyear" id="expiryyear" style="width: 100px; padding-left: 5px" class="form-control-lg" placeholder="Year">
+      <input required [(ngModel)]="expiryyear" maxlength="4" ngModel name="expiryyear" id="expiryyear" style="width: 100px; padding-left: 5px" class="form-control-lg" placeholder="YYYY">
       <div *ngIf="!validExpiryYear" class="alert-danger">Invalid year</div>
     </label>
     <label class="float-right">
-      <input required [(ngModel)]="cvv" ngModel name="cvv" id="cvv" style="width: 100px;" class="form-control-lg" placeholder="CVV">
+      <input required [(ngModel)]="cvv" maxlength="3" ngModel name="cvv" id="cvv" style="width: 100px;" class="form-control-lg" placeholder="xxx">
       <div *ngIf="!validCvv" class="alert-danger">Invalid cvv</div>
     </label>
   </div>

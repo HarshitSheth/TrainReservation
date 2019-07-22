@@ -19,13 +19,12 @@ button{
   border-color: #00203FFF;
   transition-duration: 0.4s;
   border-radius: 5px;
-  height: 60px;
+  height: 40px;
 }
 
 button:hover{
   background-color: #00203FFF;
   color: white;
-  font-size: xx-large;
 }
 
 .welcome-user-text{
@@ -48,5 +47,5 @@ div{
 }
 
 body{
-  height: 100%;
+  height: -webkit-fill-available;
 }

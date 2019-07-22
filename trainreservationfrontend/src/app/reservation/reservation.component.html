@@ -53,7 +53,7 @@
     </div>
 
     <div class="col-sm">
-      <div *ngIf="availability && paymentSuccess">
+      <div *ngIf="availability && paymentSuccess && reservationSuccess">
         <div *ngIf="verification && availability && paymentSuccess" class="text-center top-thank-you"><label class="margin-left"><pre>Thank you for reservation! Please find the details below.</pre></label></div>
         <table align="center" class="form-group fit bg-info top">
           <tr>
@@ -76,6 +76,29 @@
         <div align="center" class="top">
           <label><h4>To reserve another seat, click <button (click)="refresh()">here</button></h4></label>
         </div>
+      </div>
+      <div *ngIf="classIsSelected && paymentAmount" class="container text-center">
+        <br><br><br><br>
+        <div><h4>Class Features</h4></div>
+        <br>
+        <table class="container">
+          <tr>
+            <td class="float-left"><h5>Class Name : </h5></td>
+            <td><h5>{{classChoice}}</h5></td>
+          </tr>
+          <tr>
+            <td class="float-left"><h5>Contains AC : </h5></td>
+            <td><h5>{{ac}}</h5></td>
+          </tr>
+        <tr>
+          <td class="float-left"><h5>Seats Per Cabin : </h5></td>
+          <td><h5>{{seatsPerCabin}}</h5></td>
+        </tr>
+        <tr>
+          <td class="float-left"><h5>Passengers Per Seat : </h5></td>
+          <td><h5>{{passengerPerSeat}}</h5></td>
+        </tr>
+        </table>
       </div>
     </div>
 
