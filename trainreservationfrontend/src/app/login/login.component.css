@@ -56,3 +56,9 @@ a{
 }
 
 
+.alert-danger{
+  background-color: transparent;
+  color: red;
+}
+
+
