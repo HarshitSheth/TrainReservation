@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: trainreservationbackend.trainreservationbackend.TrainreservationbackendApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 31.842 s - in trainreservationbackend.trainreservationbackend.TrainreservationbackendApplicationTests
+Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 42.139 s - in trainreservationbackend.trainreservationbackend.TrainreservationbackendApplicationTests

@@ -56,7 +56,9 @@
             <div class="form-group">
               <label for="password" class="cols-sm-2 control-label">Password <span style="color: red">*</span></label>
               <label *ngIf="!validConfirmPass" class="float-right alert-danger">Invalid password</label>
-              <img src="../../assets/password-icon.png" class="password-icon" data-toggle="tooltip" data-placement="right" title="Password must contain at least 1 Uppercase, 1 Lowercase, 1 digit, 1 special character and minimum 8 characters long">
+              <label class="tool"><img alt="Image" class="password-icon" src="../../assets/password-icon.png"><input type="checkbox"><span>Password must contain at least 1 Uppercase, 1 Lowercase, 1 digit, 1 special character and minimum 8 characters long</span></label>
+
+<!--            <button><img src="../../assets/password-icon.png" class="password-icon" data-toggle="tooltip" data-placement="right" title=""></button>-->
               <div class="cols-sm-10">
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
