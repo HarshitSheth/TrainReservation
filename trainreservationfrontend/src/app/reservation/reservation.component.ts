@@ -70,7 +70,7 @@ export class ReservationComponent implements OnInit {
     this.classChoice = $event.target.value;
     this.setPaymentAmount(this.classChoice);
     this.classSelected = this.dataService.paymentAmount !== 0;
-    const url = 'http://13.126.191.183:8080/classAc';
+    const url = 'http://localhost:8081/classAc';
     this.http.post<boolean>(url, ReservationComponent.className).subscribe(
       res => {
         if (res) {
@@ -80,19 +80,19 @@ export class ReservationComponent implements OnInit {
         }
       }
     );
-    const url1 = 'http://13.126.191.183:8080/seatsPerCabin';
+    const url1 = 'http://localhost:8081/seatsPerCabin';
     this.http.post<string>(url1, ReservationComponent.className).subscribe(
       res => {
           this.seatsPerCabin = res;
       }
     );
-    const url2 = 'http://13.126.191.183:8080/passengerPerSeat';
+    const url2 = 'http://localhost:8081/passengerPerSeat';
     this.http.post<boolean>(url2, ReservationComponent.className).subscribe(
       res => {
         this.passengerPerSeat = res;
       }
     );
-    const url3 = 'http://13.126.191.183:8080/luggageCapacity';
+    const url3 = 'http://localhost:8081/luggageCapacity';
     this.http.post<string>(url3, ReservationComponent.className).subscribe(
       res => {
         this.luggageCapacity = res;
@@ -130,7 +130,7 @@ export class ReservationComponent implements OnInit {
         }
       }
       if (this.verification) {
-        const url = 'http://13.126.191.183:8080/verifyClassAvailability';
+        const url = 'http://localhost:8081/verifyClassAvailability';
         this.dataService.passengerDetails.classname = ReservationComponent.className;
         this.http.post<boolean>(url, this.dataService.passengerDetails.classname).subscribe(
           res => {
@@ -151,12 +151,13 @@ export class ReservationComponent implements OnInit {
 }
 
   registerPassenger() {
-      const url = 'http://13.126.191.183:8080/reservation';
+      const url = 'http://localhost:8081/reservation';
       this.http.post<Classdetails>(url, this.dataService.passengerDetails).subscribe(
         res => {
           if (null != res) {
             this.dataService.passengerDetails = res;
             this.reservationSuccess = true;
+            this.setPaymentAmount(this.dataService.passengerDetails.classname);
           } else {
             this.reservationSuccess = false;
             return;

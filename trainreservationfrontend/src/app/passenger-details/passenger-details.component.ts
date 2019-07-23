@@ -3,6 +3,8 @@ import {Classdetails} from '../../classes';
 import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {AppComponent} from '../app.component';
+import {PaymentComponent} from '../payment/payment.component';
+import {DataServiceService} from '../data-service.service';
 
 @Component({
   selector: 'app-passenger-details',
@@ -19,7 +21,7 @@ export class PassengerDetailsComponent implements OnInit {
     passengerage: '',
   };
 
-  constructor(private http: HttpClient, private router: Router, private app: AppComponent) { }
+  constructor(private http: HttpClient, private router: Router, private dataservice: DataServiceService) { }
 
   ngOnInit() {
   }
@@ -32,9 +34,13 @@ export class PassengerDetailsComponent implements OnInit {
     }
   }
 
+  get paymentAmount() {
+    return this.dataservice.paymentAmount;
+  }
+
   public fetchPassenger(pnr): PassengerDetailsComponent {
     if (this.validatePnr()) {
-      const url = 'http://13.126.191.183:8080/passengerDetails';
+      const url = 'http://localhost:8081/passengerDetails';
       this.http.post<Classdetails>(url, pnr).subscribe(
         res => {
           if (null != res && null != res.passengername) {

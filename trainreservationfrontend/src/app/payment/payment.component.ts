@@ -38,10 +38,10 @@ export class PaymentComponent implements OnInit {
       if (null != sessionStorage.getItem('reservationProcess')) {
         return true;
       } else {
-        this.router.navigate(['http://13.126.191.183:8080/reservation']);
+        this.router.navigate(['http://localhost:8081/reservation']);
       }
     } else {
-      this.router.navigate(['http://13.126.191.183:8080/login']);
+      this.router.navigate(['http://localhost:8081/login']);
     }
   }
 
@@ -61,7 +61,7 @@ export class PaymentComponent implements OnInit {
     }
 
     if (this.verification) {
-      const url = 'http://13.126.191.183:8080/payment';
+      const url = 'http://localhost:8081/payment';
       this.http.post<boolean>(url, this.paymentInfo).subscribe(
         res => {
           if (res) {

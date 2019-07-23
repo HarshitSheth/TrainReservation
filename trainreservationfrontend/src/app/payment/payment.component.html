@@ -1,7 +1,12 @@
 <form *ngIf="verifyLogin()" (ngSubmit)="payment()">
 <div class="card container">
   <div align="center">
-    <label><h4>Payment Details</h4></label>
+    <label><h4>Card Payment</h4></label>
+  </div>
+  <div>
+    <label class="float-left">
+    <h5>To pay: {{paymentInfo.paymentamount}}</h5>
+    </label>
   </div>
   <div>
     <label class="float-left">

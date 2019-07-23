@@ -63,6 +63,7 @@
             <th class="text-center">Travel Class</th>
             <th class="text-center">Coach Number</th>
             <th class="text-center">Seat Number</th>
+            <th class="text-center">Price</th>
           </tr>
           <tr>
             <td class="text-center">{{dataService.passengerDetails.pnr}}</td>
@@ -71,13 +72,14 @@
             <td class="text-center">{{dataService.passengerDetails.classname}}</td>
             <td class="text-center">{{dataService.passengerDetails.coach}}</td>
             <td class="text-center">{{dataService.passengerDetails.seatnumber}}</td>
+            <td class="text-center">{{dataService.paymentAmount}}</td>
           </tr>
         </table>
         <div align="center" class="top">
           <label><h4>To reserve another seat, click <button (click)="refresh()">here</button></h4></label>
         </div>
       </div>
-      <div *ngIf="classSelected && paymentAmount" class="container text-center">
+      <div *ngIf="classSelected && paymentAmount && !verification" class="container text-center">
         <br><br><br>
         <div><h4>Class Features</h4></div>
         <br>
