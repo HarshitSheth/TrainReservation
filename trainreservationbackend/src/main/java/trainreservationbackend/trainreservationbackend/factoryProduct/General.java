@@ -37,12 +37,8 @@ public class General implements TravelClass {
     }
 
     @Override
-    public int getClassAvailability() {
-        return classInformationCRUDService.getFromDBByID("general").getAvailability();
+    public String luggageCapacity() {
+        return "15";
     }
 
-    @Override
-    public int getTotalClassSeats() {
-        return classInformationCRUDService.getFromDBByID("general").getTotalseats();
-    }
 }

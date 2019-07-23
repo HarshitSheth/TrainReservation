@@ -47,6 +47,11 @@ public class ReservationDetailsController {
         return serviceClass.classAc(className);
     }
 
+    @RequestMapping("/luggageCapacity")
+    public String luggageCapacity(@RequestBody String className, Model model) {
+        return  serviceClass.luggageCapacity(className);
+    }
+
     @PostMapping(value = "/cancelReservation")
     public boolean cancel(@RequestBody String pnr, Model model){
         return reservationDetailsCRUDService.deleteFromDB(pnr);

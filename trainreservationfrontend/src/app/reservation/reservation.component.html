@@ -23,7 +23,7 @@
 <!--          <div *ngIf="verification && availability && paymentSuccess" class="text-center top-thank-you"><label class="margin-left"><pre>Thank you for reservation! Please find the details below.</pre></label></div>-->
           <div class="text-center alert-danger error-top">
             <div *ngIf="!availability"><label>No availability!</label></div>
-            <div *ngIf="!classIsSelected"><label>Select a class first!</label></div>
+            <div *ngIf="!classSelected"><label>Select a class first!</label></div>
             <div *ngIf="!validName"><label>Invalid Name</label></div>
             <div *ngIf="!validAge"><label>Invalid Age</label></div>
           </div>
@@ -77,8 +77,8 @@
           <label><h4>To reserve another seat, click <button (click)="refresh()">here</button></h4></label>
         </div>
       </div>
-      <div *ngIf="classIsSelected && paymentAmount" class="container text-center">
-        <br><br><br><br>
+      <div *ngIf="classSelected && paymentAmount" class="container text-center">
+        <br><br><br>
         <div><h4>Class Features</h4></div>
         <br>
         <table class="container">
@@ -97,6 +97,10 @@
         <tr>
           <td class="float-left"><h5>Passengers Per Seat : </h5></td>
           <td><h5>{{passengerPerSeat}}</h5></td>
+        </tr>
+        <tr>
+          <td class="float-left"><h5>Luggage Allowed : </h5></td>
+          <td><h5>{{luggageCapacity}} kg</h5></td>
         </tr>
         </table>
       </div>
@@ -164,7 +168,7 @@
                 &lt;!&ndash;          <div *ngIf="verification && availability && paymentSuccess" class="text-center top-thank-you"><label class="margin-left"><pre>Thank you for reservation! Please find the details below.</pre></label></div>&ndash;&gt;
                 <div class="text-center alert-danger error-top">
                   <div *ngIf="!availability"><label>No availability!</label></div>
-                  <div *ngIf="!classIsSelected"><label>Select a class first!</label></div>
+                  <div *ngIf="!classSelected"><label>Select a class first!</label></div>
                   <div *ngIf="!validName"><label>Name should not be empty and should not contain special characters or integer</label></div>
                   <div *ngIf="!validAge"><label>Age should not be empty and should only be integers</label></div>
                 </div>

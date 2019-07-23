@@ -34,12 +34,8 @@ public class ThirdTier implements TravelClass{
     }
 
     @Override
-    public int getClassAvailability() {
-        return classInformationCRUDService.getFromDBByID("Third Tier").getAvailability();
+    public String luggageCapacity() {
+        return "50";
     }
 
-    @Override
-    public int getTotalClassSeats() {
-        return classInformationCRUDService.getFromDBByID("Third Tier").getTotalseats();
-    }
 }

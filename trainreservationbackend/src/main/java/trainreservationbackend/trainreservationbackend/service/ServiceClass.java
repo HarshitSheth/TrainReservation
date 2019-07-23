@@ -123,6 +123,12 @@ public class ServiceClass {
         return travelClass.ac();
     }
 
+    public String luggageCapacity(String className){
+        TravelClassFactory travelClassFactory = TravelClassObjectFactory.getObjectFactory().getTravelClassObject(className);
+        TravelClass travelClass = travelClassFactory.getTravelClass();
+        return travelClass.luggageCapacity();
+    }
+
     public ReservationDetails getPassengerDetails(String pnr){
         if (validatePnr(pnr)) {
             ReservationDetails classdetails = reservationDetailsCRUDService.getFromDBByID(pnr);

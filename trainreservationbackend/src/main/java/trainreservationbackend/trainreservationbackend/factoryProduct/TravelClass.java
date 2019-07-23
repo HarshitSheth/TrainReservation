@@ -7,7 +7,6 @@ public interface TravelClass {
     boolean ac();
     String seatsPerCabin();
     String passengerPerSeat();
-    int getClassAvailability();
-    int getTotalClassSeats();
+    String luggageCapacity();
 
 }

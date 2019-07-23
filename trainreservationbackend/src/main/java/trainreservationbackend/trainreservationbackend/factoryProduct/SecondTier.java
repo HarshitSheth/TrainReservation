@@ -34,12 +34,8 @@ public class SecondTier implements TravelClass{
     }
 
     @Override
-    public int getClassAvailability() {
-        return classInformationCRUDService.getFromDBByID("Second Tier").getAvailability();
+    public String luggageCapacity() {
+        return "75";
     }
 
-    @Override
-    public int getTotalClassSeats() {
-        return classInformationCRUDService.getFromDBByID("Second Tier").getTotalseats();
-    }
 }

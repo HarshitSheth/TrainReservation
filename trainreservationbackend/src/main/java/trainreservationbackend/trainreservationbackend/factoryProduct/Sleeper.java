@@ -34,12 +34,8 @@ public class Sleeper implements TravelClass{
     }
 
     @Override
-    public int getClassAvailability() {
-        return classInformationCRUDService.getFromDBByID("sleeper").getAvailability();
+    public String luggageCapacity() {
+        return "30";
     }
 
-    @Override
-    public int getTotalClassSeats() {
-        return classInformationCRUDService.getFromDBByID("sleeper").getTotalseats();
-    }
 }

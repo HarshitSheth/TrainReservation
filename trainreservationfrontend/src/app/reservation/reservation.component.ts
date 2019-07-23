@@ -14,30 +14,40 @@ import {AppComponent} from '../app.component';
 export class ReservationComponent implements OnInit {
 
   static className: string;
+  classSelected = true;
+  classChoice: string;
   validName = true;
   validAge = true;
   availability = true;
   verification = false;
-  classChoice: string;
-  classIsSelected = true;
   ac = null;
   seatsPerCabin = null;
   passengerPerSeat = null;
+  luggageCapacity = null;
   reservationSuccess = false;
   constructor(private router: Router, private http: HttpClient, private dataService: DataServiceService, private app: AppComponent) {
   }
 
   ngOnInit() {
+    this.classSelected = true;
+    this.dataService.paymentAmount = 0;
     if (this.paymentSuccess) {
       this.verification = true;
       this.registerPassenger();
       this.dataService.paymentAmount = 0;
     }
   }
+  //
+  // get getClassNotSelected() {
+  //   if (ReservationComponent.classSelected === true) {
+  //     return true;
+  //   }
+  // }
 
   get paymentAmount() {
     return this.dataService.paymentAmount;
   }
+
   verifyLogin(): boolean {
     if (null != sessionStorage.getItem('userData')) {
       return true;
@@ -59,7 +69,7 @@ export class ReservationComponent implements OnInit {
     ReservationComponent.className = $event.target.value;
     this.classChoice = $event.target.value;
     this.setPaymentAmount(this.classChoice);
-    this.classIsSelected = this.dataService.paymentAmount !== 0;
+    this.classSelected = this.dataService.paymentAmount !== 0;
     const url = 'http://13.126.191.183:8080/classAc';
     this.http.post<boolean>(url, ReservationComponent.className).subscribe(
       res => {
@@ -80,6 +90,12 @@ export class ReservationComponent implements OnInit {
     this.http.post<boolean>(url2, ReservationComponent.className).subscribe(
       res => {
         this.passengerPerSeat = res;
+      }
+    );
+    const url3 = 'http://13.126.191.183:8080/luggageCapacity';
+    this.http.post<string>(url3, ReservationComponent.className).subscribe(
+      res => {
+        this.luggageCapacity = res;
       }
     );
   }
@@ -130,7 +146,7 @@ export class ReservationComponent implements OnInit {
         );
       }
     } else {
-      this.classIsSelected = false;
+      this.classSelected = false;
     }
 }
 
