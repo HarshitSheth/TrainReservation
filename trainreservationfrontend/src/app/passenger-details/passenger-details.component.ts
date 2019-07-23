@@ -40,7 +40,7 @@ export class PassengerDetailsComponent implements OnInit {
 
   public fetchPassenger(pnr): PassengerDetailsComponent {
     if (this.validatePnr()) {
-      const url = 'http://localhost:8081/passengerDetails';
+      const url = 'http://13.126.191.183:8080/passengerDetails';
       this.http.post<Classdetails>(url, pnr).subscribe(
         res => {
           if (null != res && null != res.passengername) {

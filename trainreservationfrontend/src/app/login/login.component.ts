@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    const url = 'http://localhost:8081/login';
+    const url = 'http://13.126.191.183:8080/login';
     this.http.post<Userinformation>(url, this.user).subscribe(
       res => {
         if (null != res) {

@@ -61,7 +61,7 @@ public class TrainreservationbackendApplicationTests {
         ReservationDetails classdetails = new ReservationDetails();
         classdetails.setPassengername("harshit");
         classdetails.setPassengerage("20");
-        classdetails.setClassname("third tier");
+        classdetails.setClassname("general");
         Assert.assertEquals(ReservationDetails.class, serviceClass.bookReservation(classdetails).getClass());
     }
 
