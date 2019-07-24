@@ -13,8 +13,8 @@ public class LoginController {
     @Autowired
     LoginCRUDService loginCRUDService;
 
-    @RequestMapping("/usernameAvailability")
-    public boolean usernameAvailability(@RequestBody String username, Model model){
+    @RequestMapping("/usernameAvailability/{username}")
+    public boolean usernameAvailability(@PathVariable String username){
         return loginCRUDService.usernameAvailability(username);
     }
 

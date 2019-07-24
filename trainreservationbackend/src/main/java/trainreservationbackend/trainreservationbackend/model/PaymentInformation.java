@@ -21,7 +21,7 @@ public class PaymentInformation {
     private String cardholdername;
     private int paymentamount;
 
-    public PaymentInformation(){};
+    public PaymentInformation(){}
 
     public PaymentInformation(int paymentid, String cardholdername, int paymentamount) {
         this.paymentid = paymentid;

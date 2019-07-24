@@ -40,9 +40,9 @@ export class PassengerDetailsComponent implements OnInit {
 
   public fetchPassenger(pnr): PassengerDetailsComponent {
     if (this.validatePnr()) {
-      const url = 'http://13.126.191.183:8080/passengerDetails';
-      this.http.post<Classdetails>(url, pnr).subscribe(
-        res => {
+      const url = 'http://13.126.191.183:8080/passengerDetails/' + pnr;
+      this.http.get(url).subscribe(
+        (res: Classdetails) => {
           if (null != res && null != res.passengername) {
             this.passengerDetails = res;
             this.verification = true;
@@ -58,6 +58,7 @@ export class PassengerDetailsComponent implements OnInit {
       return;
     }
   }
+
 
   validatePnr(): boolean {
     if (!this.passengerDetails.pnr.match('^[0-9]+$')) {

@@ -27,28 +27,28 @@ public class ReservationDetailsController {
         return "Get working";
     }
 
-    @RequestMapping("/passengerDetails")
-    public ReservationDetails read(@RequestBody String pnr, Model model){
+    @RequestMapping("/passengerDetails/{pnr}")
+    public ReservationDetails read(@PathVariable String pnr){
         return serviceClass.getPassengerDetails(pnr);
     }
 
-    @RequestMapping("/seatsPerCabin")
-    public String className(@RequestBody String className, Model model){
+    @RequestMapping("/seatsPerCabin/{className}")
+    public String className(@PathVariable String className){
         return serviceClass.seatsPerCabin(className);
     }
 
-    @RequestMapping("/passengerPerSeat")
-    public String passengerPerSeat(@RequestBody String className, Model model){
+    @RequestMapping("/passengerPerSeat/{className}")
+    public String passengerPerSeat(@PathVariable String className){
         return serviceClass.passengerPerSeat(className);
     }
 
-    @RequestMapping("/classAc")
-    public boolean classAc(@RequestBody String className, Model model){
+    @RequestMapping("/classAc/{className}")
+    public boolean classAc(@PathVariable String className){
         return serviceClass.classAc(className);
     }
 
-    @RequestMapping("/luggageCapacity")
-    public String luggageCapacity(@RequestBody String className, Model model) {
+    @RequestMapping("/luggageCapacity/{className}")
+    public String luggageCapacity(@PathVariable String className) {
         return  serviceClass.luggageCapacity(className);
     }
 
@@ -57,8 +57,8 @@ public class ReservationDetailsController {
         return reservationDetailsCRUDService.deleteFromDB(pnr);
     }
 
-    @RequestMapping(value = "/getAvailability")
-    public ClassInformation get(@RequestBody String classname, Model model){
+    @RequestMapping(value = "/getAvailability/{classname}")
+    public ClassInformation get(@PathVariable String classname){
         return serviceClass.getAvailability(classname);
     }
 }

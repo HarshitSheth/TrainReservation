@@ -70,9 +70,9 @@ export class ReservationComponent implements OnInit {
     this.classChoice = $event.target.value;
     this.setPaymentAmount(this.classChoice);
     this.classSelected = this.dataService.paymentAmount !== 0;
-    const url = 'http://13.126.191.183:8080/classAc';
-    this.http.post<boolean>(url, ReservationComponent.className).subscribe(
-      res => {
+    const url = 'http://13.126.191.183:8080/classAc/' + ReservationComponent.className;
+    this.http.get(url).subscribe(
+      (res: boolean) => {
         if (res) {
           this.ac = 'Yes';
         } else {
@@ -80,21 +80,21 @@ export class ReservationComponent implements OnInit {
         }
       }
     );
-    const url1 = 'http://13.126.191.183:8080/seatsPerCabin';
-    this.http.post<string>(url1, ReservationComponent.className).subscribe(
-      res => {
-          this.seatsPerCabin = res;
+    const url1 = 'http://13.126.191.183:8080/seatsPerCabin/' + ReservationComponent.className;
+    this.http.get(url1).subscribe(
+      (res: string) => {
+        this.seatsPerCabin = res;
       }
     );
-    const url2 = 'http://13.126.191.183:8080/passengerPerSeat';
-    this.http.post<boolean>(url2, ReservationComponent.className).subscribe(
-      res => {
+    const url2 = 'http://13.126.191.183:8080/passengerPerSeat/' + ReservationComponent.className;
+    this.http.get(url2).subscribe(
+      (res: boolean) => {
         this.passengerPerSeat = res;
       }
     );
-    const url3 = 'http://13.126.191.183:8080/luggageCapacity';
-    this.http.post<string>(url3, ReservationComponent.className).subscribe(
-      res => {
+    const url3 = 'http://13.126.191.183:8080/luggageCapacity/' + ReservationComponent.className;
+    this.http.get(url3).subscribe(
+      (res: string) => {
         this.luggageCapacity = res;
       }
     );
@@ -130,10 +130,10 @@ export class ReservationComponent implements OnInit {
         }
       }
       if (this.verification) {
-        const url = 'http://13.126.191.183:8080/verifyClassAvailability';
         this.dataService.passengerDetails.classname = ReservationComponent.className;
-        this.http.post<boolean>(url, this.dataService.passengerDetails.classname).subscribe(
-          res => {
+        const url = 'http://13.126.191.183:8080/verifyClassAvailability/' + this.dataService.passengerDetails.classname;
+        this.http.get(url).subscribe(
+          (res: boolean) => {
             if (res) {
               this.availability = true;
               sessionStorage.setItem('reservationProcess', 'true');

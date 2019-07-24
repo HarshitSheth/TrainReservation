@@ -65,11 +65,9 @@ export class PaymentComponent implements OnInit {
       this.http.post<boolean>(url, this.paymentInfo).subscribe(
         res => {
           if (res) {
-            console.log('payment successful');
             PaymentComponent.paymentSuccess = true;
             this.router.navigate(['reservation']);
           } else {
-            console.log('payment false');
             PaymentComponent.paymentSuccess = false;
             return;
           }

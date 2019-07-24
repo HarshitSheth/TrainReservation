@@ -37,12 +37,25 @@ export class AvailabilityComponent implements OnInit {
   classSelect($event: any) {
     ReservationComponent.className = $event.target.value;
     this.classChoice = $event.target.value;
-    const url = 'http://13.126.191.183:8080/getAvailability';
-    this.http.post<Classinformation>(url, ReservationComponent.className).subscribe(
-      res => {
+    const url = 'http://13.126.191.183:8080/getAvailability/' + this.classChoice;
+    this.http.get(url).subscribe(
+      (res: Classinformation) => {
         this.classIsSelected = true;
         this.classinfo = res;
       },
     );
   }
+
+
+  // classSelect($event: any) {
+  //   ReservationComponent.className = $event.target.value;
+  //   this.classChoice = $event.target.value;
+  //   const url = 'http://13.126.191.183:8080/getAvailability';
+  //   this.http.post<Classinformation>(url, ReservationComponent.className).subscribe(
+  //     res => {
+  //       this.classIsSelected = true;
+  //       this.classinfo = res;
+  //     },
+  //   );
+  // }
 }

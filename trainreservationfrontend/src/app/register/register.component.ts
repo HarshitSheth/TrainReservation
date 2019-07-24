@@ -69,9 +69,9 @@ export class RegisterComponent implements OnInit {
   }
 
   userNameAvailability() {
-    const url = 'http://13.126.191.183:8080/usernameAvailability';
-    this.http.post<boolean>(url, this.registerUser.username).subscribe(
-      res => {
+    const url = 'http://13.126.191.183:8080/usernameAvailability/' + this.registerUser.username;
+    this.http.get(url).subscribe(
+      (res: boolean) => {
         if (!res) {
           this.availableUser = false;
         } else {
