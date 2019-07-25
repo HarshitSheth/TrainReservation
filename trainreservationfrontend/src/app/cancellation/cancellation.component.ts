@@ -33,8 +33,8 @@ export class CancellationComponent implements OnInit {
     if (this.validatePnr()) {
       // this.details = this.passengerDetails.fetchPassenger(this.pnr);
       // if (this.confirmCancellation()) {
-      const url = 'http://13.126.191.183:8080/cancelReservation';
-      this.http.post<boolean>(url, this.pnr).subscribe(
+      const url = 'http://13.126.191.183:8080/cancelReservation/';
+      this.http.put<boolean>(url, this.pnr).subscribe(
         res => {
           if (res) {
             this.verification = true;

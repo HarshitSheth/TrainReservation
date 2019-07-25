@@ -34,8 +34,8 @@ public class ClassInformationController {
         return classInformationDao.findById("secondtier").get();
     }
 
-    @RequestMapping("/verifyClassAvailability")
-    public boolean verifyAvailability(@RequestBody String classname, Model model){
+    @RequestMapping("/verifyClassAvailability/{classname}")
+    public boolean verifyAvailability(@PathVariable String classname, Model model){
         return serviceClass.verifyClassAvailability(classname);
     }
 }

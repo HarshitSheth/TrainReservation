@@ -52,8 +52,8 @@ public class ReservationDetailsController {
         return  serviceClass.luggageCapacity(className);
     }
 
-    @PostMapping(value = "/cancelReservation")
-    public boolean cancel(@RequestBody String pnr, Model model){
+    @PutMapping(value = "/cancelReservation")
+    public boolean cancel(@RequestBody String pnr){
         return reservationDetailsCRUDService.deleteFromDB(pnr);
     }
 

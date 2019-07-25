@@ -23,7 +23,7 @@ public class LoginController {
         return loginCRUDService.registerUser(login);
     }
 
-    @RequestMapping("/login")
+    @PostMapping("/login")
     public Login login(@RequestBody Login login, Model model){
         return loginCRUDService.loginUser(login);
     }
